@@ -5,126 +5,19 @@
 body
 	display: flex
 	flex-flow: column nowrap
-	// min-height: 100vh
+	min-height: 100vh
 	justify-content: space-between
-	font-family: 'Open Sans', sans-serif
-	font-size: 12px !important
+	font-family: 'OpenSans' !important
+	font-size: 13px !important
 	color: white
 	main
 		display: flex
 		flex-flow: column nowrap
 		flex-grow: 1
-	.select2-container
-		.select2-dropdown
-			border: 1px solid #AAAAAA
-.container
-	padding: 0
-	margin: auto
-	@media (min-width: $screen-sm-min)
-		width: 1000px !important // 1013px
-		min-width: 1000px !important
-		max-width: 1000px !important
-		padding: 0 20px
 .flex-container
 	display: flex
-.nav > li
-	display: inline-block !important
-.navbar-nav
-	margin: 0 !important
-.content-work
-	margin-top: 20px
-.wrapper
-	max-width: 724px
-.tab-margin
-	margin: 0 auto
-.nolink
-	pointer-events: none
-
-// colors
-.grey-bg
-	background-color: $grey-bg
 
 // type
 a:hover, a:focus, a:link
 	text-decoration: none
-
-.justify
-	justify-content: space-between
-.text-before
-	font: 500 18px GothamPro-Medium
-	color: black
-
-// fix
-.border-none
-	.slider-obj, .ms-address-obj, .border, .wrap, .card
-		border: none !important
-	.slider-obj
-		margin-top: 0 !important
-.margin-none
-	.right-advertising > .wrapper > a.first > img
-		margin-top: 0 !important
-
-// fix advertising
-.margin-top
-	margin-top: 82px
-
-.theme-orange-blue
-	.fotorama__thumb-border
-		border-color: #0084c8 !important
-	.stock-price, .inner
-		background-color: #0084c8 !important
-	.stock
-		background-color: #ff7014 !important
-	.stock:after
-		border-right: 8px solid #ff7014 !important
-	.square, .second
-		color: #ff7014 !important
-	.color-turquoise
-		border: 1px solid #ff7014 !important
-		background-color: #ff7014 !important
-	.in-style, .free-place, .availability
-		color: #0084c8 !important
-	.inner > i:before
-		border: 1px solid #0084c8 !important
-
-// btn
-.btn-default
-	position: absolute
-	right: 15px
-	bottom: 17px
-	color: white
-	padding: 11px 24px
-	font: bold 12px 'GothamPro-Bold'
-	outline: none
-	transition: all 0.4s
-	&:focus, &:hover
-		opacity: 0.7
-		background-color: $color-1
-		color: black
-		outline: none
-		border: 1px solid $color-1
-	&.color-turquoise
-		border: 1px solid $color-1
-		background-color: $color-1
-		transition: all 0.4s
-		&:hover
-			border: 1px solid $color-1
-			background-color: $color-1
-	&.disabled
-		background-color: #AFAFAF !important
-		border: 1px solid #AFAFAF !important
-		cursor: default
-		outline: none
-		&:hover
-			color: white !important
-			background-color: $color-1
-			opacity: 1 !important
-			box-shadow: none
-	&.color-orange
-		border: 1px solid #FF7014
-		background-color: #FF7014
-		transition: all 0.4s
-		&:hover
-			border: 1px solid #FF7014
-			background-color: #FF7014
 @import '../blocks/*'
