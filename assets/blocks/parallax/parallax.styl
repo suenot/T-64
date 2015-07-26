@@ -4,6 +4,8 @@
 	background-repeat: no-repeat
 	background-attachment: fixed
 	height: 490px
+	position: relative
+	overflow: hidden
 	&:before
 		display: block
 		content: ''
@@ -11,3 +13,23 @@
 		width: 100%
 		background-color: black
 		opacity: 0.3
+	.maquette-front, .maquette-back-1, .maquette-back-2
+		position: absolute
+		margin: auto
+	.maquette-front
+		bottom: 0
+		left: 0
+		right: 0
+		z-index: 3
+		margin: auto
+		width: 310px
+	.maquette-back-1
+		bottom: -10%
+		right: 21.5%
+	.maquette-back-2
+		bottom: -10%
+		left: 22%
+		.arrow1
+			position: absolute
+			left: -28%
+			bottom: 21%
