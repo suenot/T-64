@@ -1,0 +1,33 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "devDependencies": {
+    "browser-sync": "^2.4.0",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.3.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-copy": "0.0.2",
+    "gulp-jade": "^1.0.1",
+    "gulp-livereload": "^3.8.0",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-newer": "^0.5.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-stylus": "^2.0.2"
+  },
+  "description": "gulp no build",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gulp"
+  },
+  "author": "Stasinskii",
+  "license": "ISC",
+  "dependencies": {
+    "path": "^0.11.14"
+  }
+}
