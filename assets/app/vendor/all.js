@@ -5,7 +5,4 @@ $(document).ready(function(){
 		lowerThan: 'transform',
 		languagePath: '/app/vendor/outdatedbrowser/lang/ru.html'
 	})
-	$('.parallax').parallax({
-		speed : 0.1
-	})
 });
