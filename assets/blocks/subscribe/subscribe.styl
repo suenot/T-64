@@ -20,25 +20,59 @@
 				form
 					height: 45px
 					width: 415px
-					input
-						height: 45px
-						width: 365px
-						border-radius: 4px 0 0 4px
-						font-size: 13px
-						border: 1px solid #cad3df
-						box-shadow: none
-						padding-left: 14px
-						color: #405770
-					.button
-						position: relative
-						left: -4px
-						top: 1px
-						height: 45px
-						width: 45px
-						background-color: #0082d5
-						border-radius: 0 4px 4px 0
-						border: none
-						i
-							text-align: center
-							padding-top: 5px
-							color: white
+					.input-wrapp
+						.input-search
+							height: 45px
+							width: 365px
+							border-radius: 4px 0 0 4px
+							font-size: 13px
+							border: 1px solid #cad3df
+							box-shadow: none
+							padding-left: 14px
+							color: #405770
+						.button
+							position: relative
+							left: -4px
+							top: 1px
+							height: 45px
+							width: 45px
+							background-color: #0082d5
+							border-radius: 0 4px 4px 0
+							border: none
+							i
+								text-align: center
+								padding-top: 5px
+								color: white
+@media (max-width: $screen-sm-min )
+	.subscribe
+		height: 150px
+	.subscribe-wrap
+		height: auto !important
+		width: 100%
+	.input-search
+		display: block
+		width: 100% !important
+		//margin: 0 auto
+		float: right
+	.subscribe-info
+		flex-flow: column nowrap
+		justify-content: flex-start
+		height: auto !important
+		margin-top: 25px !important
+		form
+			height: auto !important
+			width: 100% !important
+			position: relative
+		p
+			margin-bottom: 15px !important
+			margin-right: 0 !important
+	.button
+		position: absolute !important
+		right: 0
+		top: 0 !important
+		left: auto !important
+	.input-wrapp
+		//position: relative
+		width: 80%
+		margin: 0 auto
+		margin-right: 45px

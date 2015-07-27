@@ -14,22 +14,33 @@
 					width: 174px
 					height: 53px
 					margin: 0 auto
-				.icons
-					//align-self: center
+				.icon-wrapp
 					position: absolute
 					right: 0
 					top: 7px
-					i
-						display: inline-block
-						border-radius: 15px
-						height: 30px
-						width: 30px
-						border: 1px solid #ebebeb
-						color: #43a6c7
-						text-align: center
-						padding-top: 8px
-						margin-left: 13px
-						transition: all .5s
-						&:hover
-							color: white
-							background-color: #43a6c7
+					.icons
+						width: 129px
+						i
+							display: inline-block
+							border-radius: 15px
+							height: 30px
+							width: 30px
+							border: 1px solid #ebebeb
+							color: #43a6c7
+							text-align: center
+							padding-top: 8px
+							margin-left: 13px
+							transition: all .5s
+							&:hover
+								color: white
+								background-color: #43a6c7
+@media (max-width: $screen-sm-min )
+	.header
+		height: 140px
+	.icon-wrapp
+		right: auto !important
+		top: auto !important
+		bottom: -35px !important
+		width: 100%
+		.icons
+			margin: 0 auto

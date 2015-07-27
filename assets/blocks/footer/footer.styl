@@ -10,26 +10,38 @@
 				height: 53px
 				width: 100%
 				position: relative
-				.icons
+				.icon-wrapp
 					position: absolute
 					top: 7px
 					left: 0
-					i
-						display: inline-block
-						border-radius: 15px
-						height: 30px
-						width: 30px
-						border: 1px solid white
-						color: white
-						text-align: center
-						padding-top: 8px
-						margin-left: 13px
-						transition: all .5s
-						&:hover
-							color: #343434
-							background-color: white
+					.icons
+						width: 129px
+						i
+							display: inline-block
+							border-radius: 15px
+							height: 30px
+							width: 30px
+							border: 1px solid white
+							color: white
+							text-align: center
+							padding-top: 8px
+							margin-left: 13px
+							transition: all .5s
+							&:hover
+								color: #343434
+								background-color: white
 				.logo
 					display: block
 					width: 174px
 					height: 53px
 					margin: 0 auto
+@media (max-width: $screen-sm-min )
+	.footer
+		height: 145px
+	.icon-wrapp
+		right: auto !important
+		top: auto !important
+		bottom: -35px !important
+		width: 100%
+		.icons
+			margin: 0 auto
