@@ -31,7 +31,7 @@
 		top: 38%
 		width: 100%
 		text-align: center
-		font-size: 30px
+		font-size: 2.5rem
 		text-transform: uppercase
 		z-index: 10
 		overflow: hidden
@@ -92,3 +92,46 @@
 	.hot
 		background-color: #b0c549
 		background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, #a4bb38 2px, #a4bb38 4px)
+@media (max-width: $screen-md-min)
+	.card
+		h3
+			font-size: 2.5rem
+			top: 42%
+		p.text
+			font-size: 12px
+			bottom: 35%
+		&:hover > .button-wrap
+			bottom: 20%
+		&:hover > h3
+			top: 27%
+		&:hover > p.text
+			bottom: 51%
+@media (max-width: $screen-sm-min)
+	.card
+		width: 48% !important
+		margin-bottom: 25px
+@media (max-width: $screen-phone-min)
+	.card
+		width: 100% !important
+		h3
+			top: 40%
+		p.text
+			bottom: 42%
+		&:hover > h3
+			top: 27%
+		&:hover > p.text
+			bottom: 54%
+		&:hover > .button-wrap
+			bottom: 27%
+@media (max-width: $screen-xs-min)
+	.card
+		h3
+			top: 38%
+		p.text
+			bottom: 40%
+		&:hover > h3
+			top: 25%
+		&:hover > p.text
+			bottom: 53%
+		&:hover > .button-wrap
+			bottom: 20%
