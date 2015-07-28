@@ -1,1 +1,13 @@
-font-family: 'Open Sans', sans-serif;
+@font-face {
+  font-family: 'SegoeScript';
+  src: url('SegoeScript/SegoeScript.eot?#iefix') format('embedded-opentype'),  url('SegoeScript/SegoeScript.woff') format('woff'), url('SegoeScript/SegoeScript.ttf')  format('truetype'), url('SegoeScript/SegoeScript.svg#SegoeScript') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IdealistSans';
+  src: url('IdealistSans/IdealistSans.eot?#iefix') format('embedded-opentype'),  url('IdealistSans/IdealistSans.woff') format('woff'), url('IdealistSans/IdealistSans.ttf')  format('truetype'), url('IdealistSans/IdealistSans.svg#IdealistSans') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
