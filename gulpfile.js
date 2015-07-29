@@ -1,15 +1,16 @@
 "use strict"; // Помогает увидеть где ошибка.
 
 var gulp = require('gulp'), // Вызов функции gulp по умолчанию.
-concatCss = require('gulp-concat-css'), // Склейка файлов. https://www.npmjs.com/package/gulp-concat-css
-autoprefixer = require('gulp-autoprefixer'), // Авто префиксер. https://www.npmjs.com/package/gulp-autoprefixer
-livereload = require('gulp-livereload'), // https://www.npmjs.com/package/gulp-livereload
-jade = require('gulp-jade'), // Плагин для Jade
-stylus = require('gulp-stylus'), // Плагин для Stylus
-browserSync = require('browser-sync'),
-newer = require('gulp-newer'),
-plumber = require('gulp-plumber'),// Проверка на ощибки
-reload = browserSync.reload;
+    concatCss = require('gulp-concat-css'), // Склейка файлов. https://www.npmjs.com/package/gulp-concat-css
+    autoprefixer = require('gulp-autoprefixer'), // Авто префиксер. https://www.npmjs.com/package/gulp-autoprefixer
+    livereload = require('gulp-livereload'), // https://www.npmjs.com/package/gulp-livereload
+    jade = require('gulp-jade'), // Плагин для Jade
+    stylus = require('gulp-stylus'), // Плагин для Stylus
+    browserSync = require('browser-sync'),
+    newer = require('gulp-newer'),
+    plumber = require('gulp-plumber'),// Проверка на ощибки
+    reload = browserSync.reload,
+    rev_append = require('gulp-rev-append');
 
 //All browserSync
 gulp.task('server', function() {
@@ -34,6 +35,14 @@ gulp.task('stylus', function() {
         .pipe(gulp.dest('public/app'))
         .pipe(browserSync.reload({stream: true}));
     });
+
+//gulp plugin for cache-busting files using query string file hash
+gulp.task('rev_append', function() {
+  gulp.src('./public/pages/main.html')
+    .pipe(rev_append())
+    // .pipe(plumber())
+    .pipe(gulp.dest('.'));
+});
 
 //Complite html
 gulp.task('jade', function() {
@@ -119,5 +128,6 @@ gulp.task('watch', function() {
   gulp.watch('assets/pages/_*.jade', ['jade']);
 });
 
+// gulp.task('build', ['rev']);
 
 gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'watch']);
