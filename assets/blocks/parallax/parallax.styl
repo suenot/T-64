@@ -6,6 +6,12 @@
 	height: 490px
 	position: relative
 	overflow: hidden
+	p
+		text-transform: uppercase
+		font-size: 14px
+		color: white
+		font-family: 'SegoeScript'
+		margin: 0
 	@media (max-width: $screen-phone-min)
 		height: 300px
 	&:before
@@ -28,13 +34,70 @@
 		z-index: 3
 		margin: auto
 		width: 310px
+		animation: fadeInUp 1s 1 ease-out
+		.after-animation2
+			position: absolute
+			top: -15%
+			left: 36%
+			animation: fadeOut 3.5s 1 ease-out
+			animation-delay: -2s
+			p
+				position: relative
+				right: 17px
+		.after-animation3
+			position: absolute
+			top: -11%
+			right: 11%
+			animation: fadeOut 4s 1
+			animation-delay: -2s
+			p
+				position: relative
+				left: 15px
+		.after-animation4
+			position: absolute
+			top: 4%
+			right: -15%
+			animation: fadeOut 3.8s 1 ease-out
+			animation-delay: -2.5s
+			p
+				position: relative
+				left: 40px
 	.maquette-back-1
 		bottom: -10%
 		right: 21.5%
+		animation: slideInRight 1s 1 ease-out
+		animation-fill-mode: backwards
+		.after-animation1
+			position: absolute
+			top: 28%
+			right: -19%
+			animation: fadeOut 3s 1 ease-out
+			animation-delay: -2s
+			p
+				font-size: 20px
+				position: relative
+				left: 25px
 	.maquette-back-2
 		bottom: -10%
 		left: 21.5%
-		.arrow1
+		animation: slideInLeft 1s 1 ease-out
+		animation-fill-mode: backwards
+		.after-animation5
 			position: absolute
 			left: -28%
 			bottom: 21%
+			animation: fadeOut 5s 1 ease-out
+			animation-delay: -2.5s
+		.after-animation6
+			position: absolute
+			left: -29%
+			bottom: 70%
+			animation: fadeOut 3.3s 1 ease-out
+			animation-delay: -2s
+			p
+				position: relative
+				right: 55px
+@keyframes display {
+from { display: none}
+to { opacity: block }
+}
