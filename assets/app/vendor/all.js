@@ -5,6 +5,4 @@ $(document).ready(function(){
 		lowerThan: 'transform',
 		languagePath: '/app/vendor/outdatedbrowser/lang/ru.html'
 	})
-
-	new WOW().init()
 });
