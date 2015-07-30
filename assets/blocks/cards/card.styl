@@ -3,18 +3,19 @@
 	margin-bottom: 30px
 	position: relative
 	overflow: hidden
-	&:hover > .info-block
-		opacity: 1
-		top: 10px
-	&:hover > h3
-		top: 22%
-	&:hover > p.text
-		bottom: 56%
-	&:hover > .button-wrap
-		opacity: 1
-		bottom: 30%
-	&:hover > a
-		background-color: rgba(0,0,0,.7)
+		&:hover
+			&>.info-block
+				opacity: 1
+				top: 10px
+		&>h3
+			top: 22%
+		&>p.text
+			bottom: 56%
+		&>.button-wrap
+			opacity: 1
+			bottom: 30%
+		&>a
+			background-color: rgba(0,0,0,.7)
 	a
 		display: block
 		background-color: rgba(0,0,0,.3)
@@ -100,12 +101,13 @@
 		p.text
 			font-size: 12px
 			bottom: 35%
-		&:hover > .button-wrap
-			bottom: 20%
-		&:hover > h3
-			top: 27%
-		&:hover > p.text
-			bottom: 51%
+			&:hover
+				&>.button-wrap
+					bottom: 20%
+				&>h3
+					top: 27%
+				&>p.text
+					bottom: 51%
 @media (max-width: $screen-sm-min)
 	.card
 		width: 48% !important
@@ -117,21 +119,23 @@
 			top: 40%
 		p.text
 			bottom: 42%
-		&:hover > h3
-			top: 27%
-		&:hover > p.text
-			bottom: 54%
-		&:hover > .button-wrap
-			bottom: 27%
+			&:hover
+				&>h3
+					top: 27%
+				&>p.text
+					bottom: 54%
+				&>.button-wrap
+					bottom: 27%
 @media (max-width: $screen-xs-min)
 	.card
 		h3
 			top: 38%
 		p.text
 			bottom: 40%
-		&:hover > h3
-			top: 25%
-		&:hover > p.text
-			bottom: 53%
-		&:hover > .button-wrap
-			bottom: 20%
+		&:hover
+			&>h3
+				top: 25%
+			&>p.text
+				bottom: 53%
+			&>.button-wrap
+				bottom: 20%

@@ -1,6 +1,8 @@
 footer.footer
 	height: 130px
 	background-color: #343434
+	@media (max-width: $screen-sm-min)
+		height: 145px
 	.container
 		.footer-wrap
 			height: 130px
@@ -10,12 +12,20 @@ footer.footer
 				height: 53px
 				width: 100%
 				position: relative
+				// TODO: зачем две буквы p в wrapp
 				.icon-wrapp
 					position: absolute
 					top: 7px
 					left: 0
+					@media (max-width: $screen-sm-min)
+						right: auto !important
+						top: auto !important
+						bottom: -35px !important
+						width: 100%
 					.icons
 						width: 129px
+						@media (max-width: $screen-sm-min)
+							margin: 0 auto
 						img
 							display: inline-block
 							border-radius: 50%
@@ -35,13 +45,3 @@ footer.footer
 					width: 174px
 					height: 53px
 					margin: 0 auto
-@media (max-width: $screen-sm-min )
-	.footer
-		height: 145px
-	.icon-wrapp
-		right: auto !important
-		top: auto !important
-		bottom: -35px !important
-		width: 100%
-		.icons
-			margin: 0 auto
