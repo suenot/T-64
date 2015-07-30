@@ -1,5 +1,7 @@
 header.header
 	height: 125px
+	@media (max-width: $screen-sm-min)
+		height: 140px
 	.container
 		.header-wrap
 			height: 125px
@@ -14,13 +16,19 @@ header.header
 					width: 174px
 					height: 53px
 					margin: 0 auto
-				// TODO: зачем две буквы p в wrapp
-				.icon-wrapp
+				.icon-wrap
 					position: absolute
 					right: 0
 					top: 7px
+					@media (max-width: $screen-sm-min)
+						right: auto
+						top: auto
+						bottom: -35px
+						width: 100%
 					.icons
 						width: 129px
+						@media (max-width: $screen-sm-min)
+							margin: 0 auto
 						img
 							display: inline-block
 							border-radius: 50%
@@ -36,14 +44,3 @@ header.header
 								color: white
 								background-color: #43a6c7
 								border-color: #43a6c7
-// TODO: медиа встраиваем к нужному блоку, в гайдлайне это есть, смотри блок footer
-@media (max-width: $screen-sm-min)
-	.header
-		height: 140px
-	.icon-wrapp
-		right: auto !important
-		top: auto !important
-		bottom: -35px !important
-		width: 100%
-		.icons
-			margin: 0 auto

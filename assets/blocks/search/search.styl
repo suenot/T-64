@@ -5,6 +5,8 @@
 		.flex-container
 			justify-content: space-between
 			font-family: 'Open Sans', sans-serif
+			@media (max-width: $screen-phone-min)
+				display: block
 			form
 				width: 470px
 				.form-control
@@ -14,6 +16,10 @@
 				.fa-search
 					color: #FF7E6D
 					margin-top: 10px
+				@media (max-width: $screen-md-max)
+					width: 48%
+				@media (max-width: $screen-phone-min)
+					width: 100%
 			.discount
 				min-width: 31%
 				background-color: #FF543E
@@ -37,28 +43,14 @@
 					font-size: 25px
 					margin-right: 10px
 					height: 100%
-// TODO: переделать медиа внутрь блоков, импортанты лишние
-@media (max-width: $screen-md-max)
-	.search
-		form, .discount
-			width: 48%
-@media (max-width: $screen-sm-max)
-	.search
-		form, .discount
-			width: 48% !important
-@media (max-width: $screen-xs-max)
-	.search
-		.discount
-			font-size: 10px !important
-			span
-				font-size: 16px !important
-@media (max-width: $screen-phone-min)
-	.search
-		.flex-container
-			display: block
-			form, .discount
-				width: 100% !important
-			.discount
-				font-size: 15px !important
-				span
-					font-size: 24px !important
+					@media (max-width: $screen-xs-max)
+						font-size: 16px
+					@media (max-width: $screen-phone-min)
+						font-size: 24px
+				@media (max-width: $screen-md-max)
+					width: 48%
+				@media (max-width: $screen-xs-max)
+					font-size: 10px
+				@media (max-width: $screen-phone-min)
+					width: 100%
+					font-size: 13px

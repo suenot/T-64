@@ -1,15 +1,25 @@
 .subscribe
 	height: 85px
 	background-color: #efefef
+	@media (max-width: $screen-sm-min)
+		height: 150px
 	.container
 		.subscribe-wrap
 			display: flex
 			height: 85px
+			@media (max-width: $screen-sm-min)
+				height: auto
+				width: 100%
 			.subscribe-info
 				display: flex
 				margin: auto
 				height: 45px
 				width: 600px
+				@media (max-width: $screen-sm-min)
+					flex-flow: column nowrap
+					justify-content: flex-start
+					height: auto
+					margin-top: 25px
 				p
 					font-size: 16px
 					margin-bottom: 0
@@ -17,11 +27,21 @@
 					margin-right: 35px
 					text-transform: uppercase
 					color: #405770
+					@media (max-width: $screen-sm-min)
+						margin-bottom: 15px
+						margin-right: 0
 				form
 					height: 45px
 					width: 415px
 					position: relative
-					.input-wrapp
+					@media (max-width: $screen-sm-min)
+						height: auto
+						width: 100%
+					.input-wrap
+						@media (max-width: $screen-sm-min)
+							width: 80%
+							margin: 0 auto
+							margin-right: 45px
 						.input-search
 							height: 45px
 							width: 365px
@@ -31,6 +51,10 @@
 							box-shadow: none
 							padding-left: 14px
 							color: #405770
+							@media (max-width: $screen-sm-min)
+								display: block
+								width: 100%
+								float: right
 						.button
 							position: absolute
 							right: 5px
@@ -39,37 +63,11 @@
 							background-color: #0082d5
 							border-radius: 0 4px 4px 0
 							border: none
+							@media (max-width: $screen-sm-min)
+								position: absolute
+								right: 0
+								top: 0
+								left: auto
 							i
 								text-align: center
 								color: white
-@media (max-width: $screen-sm-min)
-	.subscribe
-		height: 150px
-	.subscribe-wrap
-		height: auto !important
-		width: 100%
-	.input-search
-		display: block
-		width: 100% !important
-		float: right
-	.subscribe-info
-		flex-flow: column nowrap
-		justify-content: flex-start
-		height: auto !important
-		margin-top: 25px !important
-		form
-			height: auto !important
-			width: 100% !important
-		p
-			margin-bottom: 15px !important
-			margin-right: 0 !important
-	.button
-		position: absolute !important
-		right: 0
-		top: 0 !important
-		left: auto !important
-	.input-wrapp
-		//position: relative
-		width: 80%
-		margin: 0 auto
-		margin-right: 45px

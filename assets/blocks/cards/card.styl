@@ -3,17 +3,38 @@
 	margin-bottom: 30px
 	position: relative
 	overflow: hidden
-		&:hover
-			&>.info-block
-				opacity: 1
-				top: 10px
+	@media (max-width: $screen-sm-min)
+		width: 48%
+		margin-bottom: 25px
+	@media (max-width: $screen-phone-min)
+		width: 100%
+	&:hover
+		&>.info-block
+			opacity: 1
+			top: 10px
 		&>h3
 			top: 22%
+			@media (max-width: $screen-md-min)
+				top: 27%
+			@media (max-width: $screen-xs-min)
+				top: 25%
 		&>p.text
 			bottom: 56%
+			@media (max-width: $screen-md-min)
+				bottom: 51%
+			@media (max-width: $screen-phone-min)
+				bottom: 54%
+			@media (max-width: $screen-xs-min)
+				bottom: 53%
 		&>.button-wrap
 			opacity: 1
 			bottom: 30%
+			@media (max-width: $screen-md-min)
+				bottom: 20%
+			@media (max-width: $screen-phone-min)
+				bottom: 27%
+			@media (max-width: $screen-xs-min)
+				bottom: 20%
 		&>a
 			background-color: rgba(0,0,0,.7)
 	a
@@ -37,6 +58,13 @@
 		z-index: 10
 		overflow: hidden
 		transition: all .5s
+		@media (max-width: $screen-md-min)
+			font-size: 2.5rem
+			top: 42%
+		@media (max-width: $screen-phone-min)
+			top: 40%
+		@media (max-width: $screen-xs-min)
+			top: 38%
 	p.text
 		position: absolute
 		margin: 0
@@ -47,6 +75,13 @@
 		text-transform: uppercase
 		z-index: 10
 		transition: all .5s
+		@media (max-width: $screen-md-min)
+			font-size: 12px
+			bottom: 35%
+		@media (max-width: $screen-phone-min)
+			bottom: 42%
+		@media (max-width: $screen-xs-min)
+			bottom: 40%
 	.button-wrap
 		position: absolute
 		width: 100%
@@ -93,49 +128,3 @@
 	.hot
 		background-color: #b0c549
 		background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, #a4bb38 2px, #a4bb38 4px)
-@media (max-width: $screen-md-min)
-	.card
-		h3
-			font-size: 2.5rem
-			top: 42%
-		p.text
-			font-size: 12px
-			bottom: 35%
-			&:hover
-				&>.button-wrap
-					bottom: 20%
-				&>h3
-					top: 27%
-				&>p.text
-					bottom: 51%
-@media (max-width: $screen-sm-min)
-	.card
-		width: 48% !important
-		margin-bottom: 25px
-@media (max-width: $screen-phone-min)
-	.card
-		width: 100% !important
-		h3
-			top: 40%
-		p.text
-			bottom: 42%
-			&:hover
-				&>h3
-					top: 27%
-				&>p.text
-					bottom: 54%
-				&>.button-wrap
-					bottom: 27%
-@media (max-width: $screen-xs-min)
-	.card
-		h3
-			top: 38%
-		p.text
-			bottom: 40%
-		&:hover
-			&>h3
-				top: 25%
-			&>p.text
-				bottom: 53%
-			&>.button-wrap
-				bottom: 20%
