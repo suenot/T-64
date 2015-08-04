@@ -3,71 +3,70 @@
 	background-color: #efefef
 	@media (max-width: $screen-sm-min)
 		height: 150px
-	.container
-		.subscribe-wrap
-			display: flex
-			height: 85px
-			@media (max-width: $screen-sm-min)
-				height: auto
-				width: 100%
-			.subscribe-info
-				display: flex
-				margin: auto
-				height: 45px
-				width: 600px
-				@media (max-width: $screen-sm-min)
-					flex-flow: column nowrap
-					justify-content: flex-start
-					height: auto
-					margin-top: 25px
-				p
-					font-size: 16px
-					margin-bottom: 0
-					align-self: center
-					margin-right: 35px
-					text-transform: uppercase
-					color: #405770
-					@media (max-width: $screen-sm-min)
-						margin-bottom: 15px
-						margin-right: 0
-				form
-					height: 45px
-					width: 415px
-					position: relative
-					@media (max-width: $screen-sm-min)
-						height: auto
-						width: 100%
-					.input-wrap
-						@media (max-width: $screen-sm-min)
-							width: 80%
-							margin: 0 auto
-							margin-right: 45px
-						.input-search
-							height: 45px
-							width: 365px
-							border-radius: 4px 0 0 4px
-							font-size: 13px
-							border: 1px solid #cad3df
-							box-shadow: none
-							padding-left: 14px
-							color: #405770
-							@media (max-width: $screen-sm-min)
-								display: block
-								width: 100%
-								float: right
-						.button
-							position: absolute
-							right: 5px
-							height: 45px
-							width: 45px
-							background-color: #0082d5
-							border-radius: 0 4px 4px 0
-							border: none
-							@media (max-width: $screen-sm-min)
-								position: absolute
-								right: 0
-								top: 0
-								left: auto
-							i
-								text-align: center
-								color: white
+	&__wrap
+		display: flex
+		height: 85px
+		@media (max-width: $screen-sm-min)
+			height: auto
+			width: 100%
+	&__info
+		display: flex
+		margin: auto
+		height: 45px
+		width: 600px
+		@media (max-width: $screen-sm-min)
+			flex-flow: column nowrap
+			justify-content: flex-start
+			height: auto
+			margin-top: 25px
+	&__title
+		font-size: 16px
+		margin-bottom: 0
+		align-self: center
+		margin-right: 35px
+		text-transform: uppercase
+		color: #405770
+		@media (max-width: $screen-sm-min)
+			margin-bottom: 15px
+			margin-right: 0
+	&__form
+		height: 45px
+		width: 415px
+		position: relative
+		@media (max-width: $screen-sm-min)
+			height: auto
+			width: 100%
+	&__inputWrap
+		@media (max-width: $screen-sm-min)
+			width: 80%
+			margin: 0 auto
+			margin-right: 45px
+	&__inputSearch
+		height: 45px
+		width: 365px
+		border-radius: 4px 0 0 4px
+		font-size: 13px
+		border: 1px solid #cad3df
+		box-shadow: none
+		padding-left: 14px
+		color: #405770
+		@media (max-width: $screen-sm-min)
+			display: block
+			width: 100%
+			float: right
+	&__button
+		position: absolute
+		right: 5px
+		height: 45px
+		width: 45px
+		background-color: #0082d5
+		border-radius: 0 4px 4px 0
+		border: none
+		@media (max-width: $screen-sm-min)
+			position: absolute
+			right: 0
+			top: 0
+			left: auto
+		i
+			text-align: center
+			color: white

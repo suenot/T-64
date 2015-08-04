@@ -1,47 +1,18 @@
-footer.footer
+.footer
 	height: 130px
 	background-color: #343434
 	@media (max-width: $screen-sm-min)
 		height: 145px
-	.container
-		.footer-wrap
-			height: 130px
-			display: flex
-			.footer-blocks
-				align-self: center
-				height: 53px
-				width: 100%
-				position: relative
-				.icon-wrap
-					position: absolute
-					top: 7px
-					left: 0
-					@media (max-width: $screen-sm-min)
-						right: auto
-						top: auto
-						bottom: -35px
-						width: 100%
-					.icons
-						width: 129px
-						@media (max-width: $screen-sm-min)
-							margin: 0 auto
-						img
-							display: inline-block
-							border-radius: 50%
-							height: 30px
-							width: 30px
-							box-shadow: 0px 0px 0px 1px rgba(255,255,255,1)
-							color: white
-							text-align: center
-							padding: 4px 8px
-							margin-left: 13px
-							transition: all .5s
-							&:hover
-								color: #343434
-								background-color: white
-								box-shadow: none
-				.logo
-					display: block
-					width: 174px
-					height: 53px
-					margin: 0 auto
+	&__wrap
+		height: 130px
+		display: flex
+	&__blocks
+		align-self: center
+		height: 53px
+		width: 100%
+		position: relative
+	&__logo
+		display: block
+		width: 174px
+		height: 53px
+		margin: 0 auto
