@@ -1,0 +1,89 @@
+doctype html
+html
+	head
+		meta(http-equiv="content-type" content="text/html; charset=utf-8")
+		title Документация к блокам
+		link(rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.7/styles/default.min.css")
+		//- link(rel="stylesheet", href="../app/app.css")
+		style(type="text/css").
+			body {
+				font-family: Arial;
+				margin: 0;
+				display: block;
+			}
+			.nav {
+				width: 20%;
+				min-height: 100vh;
+				float: left;
+				outline: 1px solid #ccc;
+				position: fixed;
+			}
+			h1{
+				margin: 0;
+				font-size: 20px;
+				color: white;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				background-color: #4F3CFF;
+			}
+			.content-title {
+				background-color: #FF910A;
+				position: fixed;
+				width: 80vw;
+			}
+			.content {
+				width: 80%;
+				min-height: 100vh;
+				float: right;
+				position: relative;
+				top: 40px;
+			}
+			.view-content {
+				width: 100%;
+				min-height: 80vh;
+			}
+			.list-blocks li {
+				cursor: pointer;
+				letter-spacing: 1px;
+				margin-bottom: 5px;
+				font-size: 14px;
+			}
+			.list-blocks li:hover {
+				color: #8C8EFF;
+			}
+	body
+		.content
+			h1.content-title Контент блока
+				span.name-block
+			.code-html
+			pre: code.lang-html.code-html
+			pre: code.code-jade
+			pre: code.code-styl
+
+		.nav
+			h1 Список блоков
+			ul.list-blocks
+				li card
+				li cards-list
+				li footer
+				li header
+				li logo
+				li parallax
+				li search
+				li socials
+				li subscribe
+	script(src="/app/vendor/jquery-1.11.3.js")
+	script(src="//cdn.jsdelivr.net/highlight.js/8.7/highlight.min.js")
+	script(type="text/javascript").
+		hljs.initHighlightingOnLoad();
+		$('document').ready(function(){
+			$('.list-blocks > li').on('click', function(e) {
+				e.preventDefault();
+				var block = $(this).text();
+				$('.code-html').load('/blocks/' + block + '/' + block + '.html');
+				$('.code-jade').load('/blocks/' + block + '/' + block + '.jade');
+				$('.code-styl').load('/blocks/' + block + '/' + block + '.styl');
+				$('.name-block').text(': ' + block);
+			});
+		});

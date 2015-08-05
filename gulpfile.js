@@ -126,6 +126,7 @@ gulp.task('watch', function() {
   gulp.watch('assets/pages/*',['blocks']);
   gulp.watch('assets/pages/index.jade', ['index']);
   gulp.watch('assets/pages/_*.jade', ['jade']);
+  gulp.watch('assets/docs/*.jade', ['jade']);
 });
 
 // gulp.task('build', ['rev']);
