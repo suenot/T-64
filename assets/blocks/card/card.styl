@@ -8,17 +8,17 @@
 		margin-bottom: 25px
 	@media (max-width: $screen-phone-min)
 		width: 100%
-	&:hover
-		&>.card__info
+	&:hover > .card
+		&__info
 			opacity: 1
 			top: 10px
-		&>.card__title
+		&__title
 			top: 22%
 			@media (max-width: $screen-md-min)
 				top: 27%
 			@media (max-width: $screen-xs-min)
 				top: 25%
-		&>.card__text
+		&__text
 			bottom: 56%
 			@media (max-width: $screen-md-min)
 				bottom: 51%
@@ -26,7 +26,7 @@
 				bottom: 54%
 			@media (max-width: $screen-xs-min)
 				bottom: 53%
-		&>.card__buttonWrap
+		&__buttonWrap
 			opacity: 1
 			bottom: 30%
 			@media (max-width: $screen-md-min)
@@ -35,7 +35,7 @@
 				bottom: 27%
 			@media (max-width: $screen-xs-min)
 				bottom: 20%
-		&>.card__imgContent
+		&__imgContent
 			background-color: rgba(0,0,0,.7)
 	&__imgContent
 		display: block
@@ -106,6 +106,7 @@
 		transition: all .5s
 		&:hover
 			background-color: #ff5541
+			color: white
 	&__info
 		position: absolute
 		top: -20px

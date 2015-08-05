@@ -1,4 +1,4 @@
-.icons
+.socials
 	position: absolute
 	&--foot
 		top: 7px
@@ -15,7 +15,7 @@
 		width: 129px
 		@media (max-width: $screen-sm-min)
 			margin: 0 auto
-		img
+		a
 			display: inline-block
 			border-radius: 50%
 			height: 30px
@@ -27,15 +27,29 @@
 			transition: all .5s
 			&:hover
 				box-shadow: none
+			svg
+				position: relative
 		&--foot
-			img
-				color: white
+			a
 				&:hover
-					color: #343434
 					background-color: white
+					svg path
+						fill: #343434
+				svg
+					top: 3px
+					right: 1px
+				svg path
+					fill: #fff
 		&--head
-			img
-				color: #43a6c7
+			a
+				border: 1px solid #ececec
 				&:hover
-					color: white
+					border: 1px solid #fff
 					background-color: #43a6c7
+					svg path
+						fill: white
+				svg
+					top: 2px
+					right: 2px
+				svg path
+					fill: #43a6c7
