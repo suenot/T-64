@@ -1,56 +1,57 @@
 .search
-	.container
+	&__wrap
+		display: flex
 		margin-top: 36px
 		margin-bottom: 26px
-		.flex-container
-			justify-content: space-between
-			font-family: 'Open Sans', sans-serif
-			@media (max-width: $screen-phone-min)
-				display: block
-			form
-				width: 470px
-				.form-control
-					font-size: 14px
-					color: #405770
-					font-style: italic
-				.fa-search
-					color: #FF7E6D
-					margin-top: 10px
-				@media (max-width: $screen-md-max)
-					width: 48%
-				@media (max-width: $screen-phone-min)
-					width: 100%
-			.discount
-				min-width: 31%
-				background-color: #FF543E
-				border-radius: 3px
-				text-transform: uppercase
-				font-size: 15px
-				height: 34px
-				display: flex
-				align-items: center
-				justify-content: space-between
-				.both
-					display: flex
-					align-items: center
-					i
-						margin: 0 10px
-					p
-						margin: 0
-				span
-					display: flex
-					align-items: center
-					font-size: 25px
-					margin-right: 10px
-					height: 100%
-					@media (max-width: $screen-xs-max)
-						font-size: 16px
-					@media (max-width: $screen-phone-min)
-						font-size: 24px
-				@media (max-width: $screen-md-max)
-					width: 48%
-				@media (max-width: $screen-xs-max)
-					font-size: 10px
-				@media (max-width: $screen-phone-min)
-					width: 100%
-					font-size: 13px
+		justify-content: space-between
+		font-family: 'Open Sans', sans-serif
+		@media (max-width: $screen-phone-min)
+			display: block
+	&__form
+		width: 470px
+		@media (max-width: $screen-md-max)
+			width: 48%
+		@media (max-width: $screen-phone-min)
+			width: 100%
+		.fa-search
+			color: #FF7E6D
+			margin-top: 10px
+		.form-control
+			font-size: 14px
+			color: #d3d3d3
+			font-style: italic
+			border-color: #e1e1e1
+	&__discount
+		min-width: 31%
+		background-color: #FF543E
+		border-radius: 3px
+		text-transform: uppercase
+		font-size: 15px
+		height: 34px
+		display: flex
+		align-items: center
+		justify-content: space-between
+		@media (max-width: $screen-md-max)
+			width: 48%
+		@media (max-width: $screen-xs-max)
+			font-size: 10px
+		@media (max-width: $screen-phone-min)
+			width: 100%
+			font-size: 13px
+	&__both
+		display: flex
+		align-items: center
+		i
+			margin: 0 10px
+		p
+			margin: 0
+	&__percent
+		display: flex
+		align-items: center
+		font-size: 25px
+		margin-right: 10px
+		height: 100%
+		@media (max-width: $screen-xs-max)
+			font-size: 16px
+		@media (max-width: $screen-phone-min)
+			font-size: 24px

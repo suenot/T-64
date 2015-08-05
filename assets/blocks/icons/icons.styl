@@ -1,0 +1,41 @@
+.icons
+	position: absolute
+	&--foot
+		top: 7px
+		left: 0
+	&--head
+		right: 0
+		top: 7px
+	@media (max-width: $screen-sm-min)
+		right: auto
+		top: auto
+		bottom: -35px
+		width: 100%
+	&__wrap
+		width: 129px
+		@media (max-width: $screen-sm-min)
+			margin: 0 auto
+		img
+			display: inline-block
+			border-radius: 50%
+			height: 30px
+			width: 30px
+			box-shadow: 0px 0px 0px 1px rgba(255,255,255,1)
+			text-align: center
+			padding: 4px 8px
+			margin-left: 13px
+			transition: all .5s
+			&:hover
+				box-shadow: none
+		&--foot
+			img
+				color: white
+				&:hover
+					color: #343434
+					background-color: white
+		&--head
+			img
+				color: #43a6c7
+				&:hover
+					color: white
+					background-color: #43a6c7
