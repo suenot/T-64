@@ -21,6 +21,12 @@
 			color: #d3d3d3
 			font-style: italic
 			border-color: #e1e1e1
+	&__iconSearch
+		svg
+			position: relative
+			top: 5px
+			path
+				fill: #ff5541
 	&__discount
 		min-width: 31%
 		background-color: #FF543E
@@ -41,10 +47,15 @@
 	&__both
 		display: flex
 		align-items: center
-		i
-			margin: 0 10px
 		p
 			margin: 0
+	&__iconPrice
+		margin: 0 10px 0 5px
+		svg
+			position: relative
+			top: 2px
+			path
+				fill: white
 	&__percent
 		display: flex
 		align-items: center
@@ -54,4 +65,4 @@
 		@media (max-width: $screen-xs-max)
 			font-size: 16px
 		@media (max-width: $screen-phone-min)
-			font-size: 24px
+			font-size: 20px
