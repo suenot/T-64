@@ -3,7 +3,7 @@
 header.header
 	.container
 		.header__wrap
-			.header__blocks(itemtype="http://schema.org/Organization" itemscope)
-				a.header__logo(href="#"): img(itemprop="logo" src="/img/logo.svg" alt="Prestapro")
+			.header__blocks(itemscope itemtype="http://schema.org/Organization")
+				include /blocks/logo/logo-header
 				include /blocks/socials/socials-header
 // end header
