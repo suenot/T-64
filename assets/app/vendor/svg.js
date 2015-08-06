@@ -1,5 +1,5 @@
 $('document').ready(function(){
 	$('.icon').each(function(){
-		var data = $(this).load($(this).data('icon'));
+		$(this).load($(this).data('icon'));
 	});
 });

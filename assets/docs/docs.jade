@@ -1,0 +1,40 @@
+doctype html
+html
+	head
+		meta(http-equiv="content-type" content="text/html; charset=utf-8")
+		title Документация к блокам
+		include /pages/_head.jade
+		link(rel="stylesheet" href="monokai.css")
+		link(rel="stylesheet" href="docs.css")
+		//- link(rel="stylesheet", href="../app/app.css")
+	body
+		.content
+			h1.content-title Контент блока
+				span#name-block
+				.view-block-btn Показать блок
+				.close-btn
+					.cross
+			#code-view
+			h4 html
+			pre: code.html#code-html
+			h4 jade
+			pre: code.jade#code-jade
+			h4 stylus
+			pre: code.styl#code-styl
+
+		.nav
+			h1 Список блоков
+			ul.list-blocks
+				li card
+				li cards-list
+				li footer
+				li header
+				li logo
+				li parallax
+				li search
+				li socials
+				li subscribe
+
+	include /pages/_foot.jade
+	script(src="highlight.js")
+	script(src="docs.js")
