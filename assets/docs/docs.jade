@@ -4,71 +4,15 @@ html
 		meta(http-equiv="content-type" content="text/html; charset=utf-8")
 		title Документация к блокам
 		link(rel="stylesheet" href="monokai.css")
+		link(rel="stylesheet" href="docs.css")
 		//- link(rel="stylesheet", href="../app/app.css")
-		style(type="text/css").
-			body {
-				font-family: Arial;
-				margin: 0;
-				display: block;
-			}
-			code {
-				padding: 20px !important;
-			}
-			pre {
-				margin: 0;
-			}
-			.nav {
-				width: 20%;
-				min-height: 100vh;
-				float: left;
-				outline: 1px solid #ccc;
-				position: fixed;
-			}
-			h1{
-				margin: 0;
-				font-size: 20px;
-				color: white;
-				height: 40px;
-				line-height: 40px;
-				text-align: center;
-				background-color: #4F3CFF;
-			}
-			h4 {
-				padding-left: 30px;
-				margin: 0;
-				padding: 25px 40px;
-				font-size: 20px;
-				background: linear-gradient(#23241f, #fff 50%, #23241f);
-			}
-			.content-title {
-				background-color: #FF910A;
-				position: fixed;
-				width: 80vw;
-			}
-			.content {
-				width: 80%;
-				min-height: 100vh;
-				float: right;
-				position: relative;
-				top: 40px;
-			}
-			.view-content {
-				width: 100%;
-				min-height: 80vh;
-			}
-			.list-blocks li {
-				cursor: pointer;
-				letter-spacing: 1px;
-				margin-bottom: 5px;
-				font-size: 14px;
-			}
-			.list-blocks li:hover {
-				color: #8C8EFF;
-			}
 	body
 		.content
 			h1.content-title Контент блока
 				span#name-block
+				.view-block-btn Показать блок
+				.close
+					.cross
 			#code-view
 			h4 html
 			pre: code.html#code-html
@@ -89,29 +33,7 @@ html
 				li search
 				li socials
 				li subscribe
+
 	script(src="/app/vendor/jquery-1.11.3.js")
 	script(src="highlight.js")
-	script(type="text/javascript").
-		$('document').ready(function(){
-			$('.list-blocks > li').on('click', function(e) {
-				e.preventDefault();
-				var block = $(this).text();
-				$('#code-view').load('/blocks/' + block + '/' + block + '.html');
-				$.get('/blocks/' + block + '/' + block + '.html', function(data) {
-					data = data.replace(/<!--(.*?)-->/ig, '').substr(2);
-					console.log(data);
-					$('#code-html').text(data);
-					hljs.highlightBlock(document.getElementById('code-html'));
-				});
-				$.get('/blocks/' + block + '/' + block + '.jade', function(data) {
-					$('#code-jade').text(data);
-					hljs.highlightBlock(document.getElementById('code-jade'));
-				});
-				$.get('/blocks/' + block + '/' + block + '.styl', function(data) {
-					$('#code-styl').text(data);
-					hljs.highlightBlock(document.getElementById('code-styl'));
-				});
-				$('#name-block').text(': ' + block);
-			});
-			$('.list-blocks > li:nth-child(1)').click();
-		});
+	script(src="docs.js")
