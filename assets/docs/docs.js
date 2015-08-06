@@ -2,6 +2,8 @@ $('document').ready(function(){
 	var block;
 	$('.list-blocks > li').on('click', function(e) {
 		e.preventDefault();
+		$('#code-view').slideUp();
+		$('.close-btn').css('display', 'none');
 		block = $(this).text();
 		$('#code-view').load('/blocks/' + block + '/' + block + '.html');
 		$.get('/blocks/' + block + '/' + block + '.html', function(data) {
@@ -24,9 +26,14 @@ $('document').ready(function(){
 	$('.list-blocks > li:nth-child(1)').click();
 	$('.view-block-btn').on('click', function() {
 		$('#code-view').slideDown();
-		$('.close').css('display', 'block');
+		$('.close-btn').css('display', 'block');
+		// Init SVG---------------
+		$('.icon').each(function(){
+			$(this).load($(this).data('icon'));
+		});
+		//------------------------
 	});
-	$('.close').on('click', function() {
+	$('.close-btn').on('click', function() {
 		$('#code-view').slideUp();
 		$(this).css('display', 'none');
 	})

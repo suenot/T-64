@@ -1,5 +1,5 @@
 body {
-	font-family: Arial;
+	font-family: Arial !important;
 	margin: 0;
 	display: block;
 	min-width: 800px;
@@ -9,6 +9,7 @@ code {
 }
 pre {
 	margin: 0;
+	padding: 0;
 }
 .nav {
 	width: 20%;
@@ -36,6 +37,7 @@ h4 {
 	margin: 0;
 	padding: 10px 40px;
 	font-size: 16px;
+	color: black;
 }
 .content-title {
 	position: fixed;
@@ -47,11 +49,13 @@ h4 {
 	float: right;
 	position: relative;
 	top: 40px;
-	padding-left: 10px;
 }
 .view-content {
 	width: 100%;
 	min-height: 80vh;
+}
+.list-blocks {
+	margin-top: 15px;
 }
 .list-blocks li {
 	cursor: pointer;
@@ -65,6 +69,7 @@ h4 {
 }
 .view-block-btn {
 	height: 30px;
+	color: black;
 	position: absolute;
 	font-size: 14px;
 	padding: 0 15px;
@@ -75,7 +80,7 @@ h4 {
 	cursor: pointer;
 	transition: opacity .4s;
 }
-.close {
+.close-btn {
 	height: 30px;
 	width: 30px;
 	position: absolute;
@@ -92,11 +97,13 @@ h4 {
 	margin: 5px;
 	background: linear-gradient(-45deg, rgba(255,255,255,0) 45%, rgba(0,0,0,.4) 51%, rgba(255,255,255,0) 53%), linear-gradient(45deg, rgba(255,255,255,0) 47%, rgba(0,0,0,.4) 53%, rgba(255,255,255,0) 53%);
 }
-.view-block-btn:hover, .close:hover {
+.view-block-btn:hover, .close-btn:hover {
 	opacity: 0.8;
 }
 #code-view {
 	display: none;
+	padding-left: 20px;
+	padding-top: 15px;
 }
 @media (max-width: 800px) {
 	.nav {
