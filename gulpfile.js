@@ -114,6 +114,22 @@ gulp.task('font', function() {
           .pipe(browserSync.reload({stream: true}));
       });
 
+// Copy All blocks *.styl and *.jade At (blocks)
+gulp.task('docs', function() {
+  return gulp.src(['assets/blocks/*.*', 'assets/blocks/**/*.*'])
+          .pipe(newer('public/blocks'))
+          .pipe(gulp.dest('public/blocks'))
+          .pipe(browserSync.reload({stream: true}));
+      });
+
+// Copy docs file functional At (docs)
+gulp.task('docs', function() {
+  return gulp.src(['assets/docs/*.css', 'assets/docs/*.js'])
+          .pipe(newer('public/docs'))
+          .pipe(gulp.dest('public/docs'))
+          .pipe(browserSync.reload({stream: true}));
+      });
+
 // Watch everything
 gulp.task('watch', function() {
   gulp.watch('assets/blocks/**/*.styl',['stylus']);
@@ -131,4 +147,4 @@ gulp.task('watch', function() {
 
 // gulp.task('build', ['rev']);
 
-gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'watch']);
+gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs', 'watch']);
