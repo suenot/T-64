@@ -55,11 +55,14 @@ html
 	body
 		.content
 			h1.content-title Контент блока
-				span.name-block
-			.code-html
-			pre: code.lang-html.code-html
-			pre: code.code-jade
-			pre: code.code-styl
+				span#name-block
+			#code-view
+			h4 html
+			pre: code.html#code-html
+			h4 jade
+			pre: code.jade#code-jade
+			h4 styl
+			pre: code.styl#code-styl
 
 		.nav
 			h1 Список блоков
@@ -76,14 +79,32 @@ html
 	script(src="/app/vendor/jquery-1.11.3.js")
 	script(src="//cdn.jsdelivr.net/highlight.js/8.7/highlight.min.js")
 	script(type="text/javascript").
-		hljs.initHighlightingOnLoad();
 		$('document').ready(function(){
+			function htmlencode(text) {
+				return (
+					text
+					.replace(/&/g, '&amp;')
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;')
+				);
+			}
 			$('.list-blocks > li').on('click', function(e) {
 				e.preventDefault();
 				var block = $(this).text();
-				$('.code-html').load('/blocks/' + block + '/' + block + '.html');
-				$('.code-jade').load('/blocks/' + block + '/' + block + '.jade');
-				$('.code-styl').load('/blocks/' + block + '/' + block + '.styl');
-				$('.name-block').text(': ' + block);
+				$('#code-view').load('/blocks/' + block + '/' + block + '.html');
+				$.get('/blocks/' + block + '/' + block + '.html', function(data) {
+					$('#code-html').text(data);
+					hljs.highlightBlock(document.getElementById('code-html'));
+				});
+				$.get('/blocks/' + block + '/' + block + '.jade', function(data) {
+					$('#code-jade').text(data);
+					hljs.highlightBlock(document.getElementById('code-jade'));
+				});
+				$.get('/blocks/' + block + '/' + block + '.styl', function(data) {
+					$('#code-styl').text(data);
+					hljs.highlightBlock(document.getElementById('code-styl'));
+				});
+				$('#name-block').text(': ' + block);
 			});
+			$('.list-blocks > li:nth-child(1)').click();
 		});
