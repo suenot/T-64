@@ -80,14 +80,6 @@ html
 	script(src="//cdn.jsdelivr.net/highlight.js/8.7/highlight.min.js")
 	script(type="text/javascript").
 		$('document').ready(function(){
-			function htmlencode(text) {
-				return (
-					text
-					.replace(/&/g, '&amp;')
-					.replace(/</g, '&lt;')
-					.replace(/>/g, '&gt;')
-				);
-			}
 			$('.list-blocks > li').on('click', function(e) {
 				e.preventDefault();
 				var block = $(this).text();
