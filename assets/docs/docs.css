@@ -19,6 +19,7 @@ pre {
 	position: fixed;
 	background-color: #23241f;
 	overflow: hidden;
+	z-index: 10000;
 }
 h1{
 	position: relative;
@@ -31,6 +32,7 @@ h1{
 	overflow: hidden;
 	border-bottom: 1px solid #23241f;
 	background-color: white;
+	z-index: 10000;
 }
 h4 {
 	padding-left: 30px;
