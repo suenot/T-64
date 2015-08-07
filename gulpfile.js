@@ -9,10 +9,12 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     newer = require('gulp-newer'),
     plumber = require('gulp-plumber'),
-    reload = browserSync.reload;
-    rev = require('gulp-rev-append');
-    webp = require('gulp-webp');
-    uncss = require('gulp-uncss');
+    reload = browserSync.reload,
+    rev = require('gulp-rev-append'),
+    webp = require('gulp-webp'),
+    uncss = require('gulp-uncss'),
+    fs = require("fs"),
+    postcss = require('gulp-postcss');
 
 // All browserSync
 gulp.task('server', function() {
@@ -107,14 +109,6 @@ gulp.task('app', function() {
           .pipe(browserSync.reload({stream: true}));
       });
 
-gulp.task('uncss', ['app', 'jade', 'stylus'], function() {
-  return gulp.src('public/app/vendor/**/*.css')
-  .pipe(uncss({
-    html: ['public/pages/main.html']
-  }))
-  .pipe(gulp.dest('public/app/vendor/'));
-});
-
 // Copy Web Fonts To Dist
 gulp.task('font', function() {
   return gulp.src('assets/font/**')
@@ -156,5 +150,43 @@ gulp.task('watch', function() {
   gulp.watch('assets/docs/**/*.*', ['docsFile']);
 });
 
-gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile', 'watch']);
-gulp.task('build', ['default', 'uncss']);
+// BUILD
+gulp.task('uncss', ['app', 'jade', 'stylus'], function() {
+  return gulp.src('public/app/vendor/**/*.css')
+  .pipe(uncss({
+    html: ['public/pages/main.html']
+  }))
+  .pipe(gulp.dest('public/app/vendor/'));
+});
+
+gulp.task('postcss', ['uncss'], function () {
+    return gulp.src('public/app/**/*.css')
+    .pipe(postcss([
+      require('cssnext')(),
+      require('css-mqpacker')(),
+      require('postcss-zindex')(),
+      require('postcss-discard-duplicates')(),
+      require('postcss-discard-comments')({removeAll: true}),
+      require('postcss-normalize-url')(),
+      require('postcss-minify-selectors')(),
+      require('postcss-pseudoelements')(),
+      require('postcss-unique-selectors')(),
+      require('postcss-colormin')(),
+      require('postcss-merge-rules')(),
+      require('postcss-discard-unused')(),
+      require('postcss-reduce-idents')(),
+      require('postcss-minify-font-weight')(),
+      require('postcss-discard-empty')(),
+      require('postcss-minify-trbl')(),
+      require('postcss-font-family')(),
+      require('postcss-single-charset')()
+    ]))
+    .pipe(postcss([
+      require('cssnano')()
+    ]))
+    .pipe(gulp.dest('public/app'));
+});
+
+gulp.task('main', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile']);
+gulp.task('default', ['main', 'watch']);
+gulp.task('build', ['main', 'uncss', 'postcss']);
