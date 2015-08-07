@@ -9,8 +9,9 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     newer = require('gulp-newer'),
     plumber = require('gulp-plumber'),
-    reload = browserSync.reload,
-    rev_append = require('gulp-rev-append'),
+    reload = browserSync.reload;
+    rev = require('gulp-rev-append');
+    webp = require('gulp-webp');
     uncss = require('gulp-uncss');
 
 // All browserSync
@@ -33,32 +34,18 @@ gulp.task('stylus', function() {
                 browsers: ['last 4 versions'],
                 cascade: false
             }))
-        // .pipe(uncss({
-        //     html: ['./public/pages/main.html']
-        // }))
         .pipe(gulp.dest('public/app'))
         .pipe(browserSync.reload({stream: true}));
     });
 
-
-  // gulp.task('uncss', ['app', 'jade', 'stylus'], function() {
-  // return gulp.src('public/app/vendor/bootstrap/bootstrap.css')
-  //   .pipe(uncss({
-  //     html: 'public/pages/main.html'
-  //   }))
-  //   .pipe(gulp.dest('public/app/vendor/bootstrap '));
-  // });
-
-// Gulp plugin for cache-busting files using query string file hash
-// gulp.task('rev_append', function() {
-//   gulp.src('./public/pages/main.html')
-//     // .pipe(rev_append())
-//     // .pipe(plumber())
-//     .pipe(gulp.dest('.'));
-// });
+gulp.task('webp', function() {
+  return gulp.src('assets/img/cards/*.jpg')
+    .pipe(webp())
+    .pipe(gulp.dest('public/img/cards'));
+});
 
 // Complite html
-gulp.task('jade', function() {
+gulp.task('jade', ['stylus'], function() {
   return gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
             .pipe(jade({
               pretty: true,
@@ -66,6 +53,7 @@ gulp.task('jade', function() {
             }))
           .pipe(plumber())
           .on('error', console.error.bind(console))
+          .pipe(rev())
           .pipe(gulp.dest('./public/'))
           .pipe(browserSync.reload({stream: true}));
           });
@@ -114,7 +102,7 @@ gulp.task('_images', function() {
 // Copy All Files At (app)
 gulp.task('app', function() {
   return gulp.src(['assets/app/vendor/*.*', 'assets/app/vendor/**/*.*'])
-          // .pipe(newer('public/app/vendor'))
+          .pipe(newer('public/app/vendor'))
           .pipe(gulp.dest('public/app/vendor'))
           .pipe(browserSync.reload({stream: true}));
       });
@@ -168,5 +156,5 @@ gulp.task('watch', function() {
   gulp.watch('assets/docs/**/*.*', ['docsFile']);
 });
 
-gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs', 'docsFile', 'watch']);
+gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile', 'watch']);
 gulp.task('build', ['default', 'uncss']);

@@ -16,7 +16,8 @@
     "gulp-plumber": "^1.0.1",
     "gulp-rev-append": "^0.1.6",
     "gulp-stylus": "^2.0.2",
-    "gulp-uncss": "^1.0.3"
+    "gulp-uncss": "^1.0.3",
+    "gulp-webp": "^2.3.0"
   },
   "description": "gulp no build",
   "main": "gulpfile.js",
