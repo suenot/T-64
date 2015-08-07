@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     newer = require('gulp-newer'),
     plumber = require('gulp-plumber'),
     reload = browserSync.reload,
-    rev_append = require('gulp-rev-append');
+    rev = require('gulp-rev-append'),
+    webp = require('gulp-webp');
 
 // All browserSync
 gulp.task('server', function() {
@@ -29,23 +30,21 @@ gulp.task('stylus', function() {
             .pipe(plumber())
         .on('error', console.error.bind(console))
         .pipe(autoprefixer({
-                browsers: ['last 2 versions'],
+                browsers: ['last 4 versions'],
                 cascade: false
             }))
         .pipe(gulp.dest('public/app'))
         .pipe(browserSync.reload({stream: true}));
     });
 
-// Gulp plugin for cache-busting files using query string file hash
-gulp.task('rev_append', function() {
-  gulp.src('./public/pages/main.html')
-    .pipe(rev_append())
-    // .pipe(plumber())
-    .pipe(gulp.dest('.'));
+gulp.task('webp', function() {
+  return gulp.src('assets/img/cards/*.jpg')
+    .pipe(webp())
+    .pipe(gulp.dest('public/img/cards'));
 });
 
 // Complite html
-gulp.task('jade', function() {
+gulp.task('jade', ['stylus'], function() {
   return gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
             .pipe(jade({
               pretty: true,
@@ -53,6 +52,7 @@ gulp.task('jade', function() {
             }))
           .pipe(plumber())
           .on('error', console.error.bind(console))
+          .pipe(rev())
           .pipe(gulp.dest('./public/'))
           .pipe(browserSync.reload({stream: true}));
           });
@@ -147,4 +147,4 @@ gulp.task('watch', function() {
 
 // gulp.task('build', ['rev']);
 
-gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs-copy', 'docs', 'watch']);
+gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs-copy', 'docs', 'watch']);
