@@ -120,12 +120,12 @@ gulp.task('app', function() {
       });
 
 gulp.task('uncss', ['app', 'jade', 'stylus'], function() {
-  return gulp.src('public/app/vendor/bootstrap/bootstrap.css')
-    .pipe(uncss({
-      html: 'public/pages/main.html'
-    }))
-    .pipe(gulp.dest('public/app/vendor/bootstrap'));
-  });
+  return gulp.src('public/app/vendor/**/*.css')
+  .pipe(uncss({
+    html: ['public/pages/main.html']
+  }))
+  .pipe(gulp.dest('public/app/vendor/'));
+});
 
 // Copy Web Fonts To Dist
 gulp.task('font', function() {
@@ -168,4 +168,5 @@ gulp.task('watch', function() {
 
 // gulp.task('build', ['rev']);
 
-gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs-copy', 'docs', 'watch', 'uncss']);
+gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs-copy', 'docs', 'watch']);
+gulp.task('build', ['default', 'uncss']);
