@@ -33,20 +33,29 @@ gulp.task('stylus', function() {
                 browsers: ['last 4 versions'],
                 cascade: false
             }))
-        .pipe(uncss({
-            html: ['./public/pages/main.html']
-        }))
+        // .pipe(uncss({
+        //     html: ['./public/pages/main.html']
+        // }))
         .pipe(gulp.dest('public/app'))
         .pipe(browserSync.reload({stream: true}));
     });
 
+
+  // gulp.task('uncss', ['app', 'jade', 'stylus'], function() {
+  // return gulp.src('public/app/vendor/bootstrap/bootstrap.css')
+  //   .pipe(uncss({
+  //     html: 'public/pages/main.html'
+  //   }))
+  //   .pipe(gulp.dest('public/app/vendor/bootstrap '));
+  // });
+
 // Gulp plugin for cache-busting files using query string file hash
-gulp.task('rev_append', function() {
-  gulp.src('./public/pages/main.html')
-    .pipe(rev_append())
-    // .pipe(plumber())
-    .pipe(gulp.dest('.'));
-});
+// gulp.task('rev_append', function() {
+//   gulp.src('./public/pages/main.html')
+//     // .pipe(rev_append())
+//     // .pipe(plumber())
+//     .pipe(gulp.dest('.'));
+// });
 
 // Complite html
 gulp.task('jade', function() {
@@ -105,10 +114,18 @@ gulp.task('_images', function() {
 // Copy All Files At (app)
 gulp.task('app', function() {
   return gulp.src(['assets/app/vendor/*.*', 'assets/app/vendor/**/*.*'])
-          .pipe(newer('public/app/vendor'))
+          // .pipe(newer('public/app/vendor'))
           .pipe(gulp.dest('public/app/vendor'))
           .pipe(browserSync.reload({stream: true}));
       });
+
+gulp.task('uncss', ['app', 'jade', 'stylus'], function() {
+  return gulp.src('public/app/vendor/bootstrap/bootstrap.css')
+    .pipe(uncss({
+      html: 'public/pages/main.html'
+    }))
+    .pipe(gulp.dest('public/app/vendor/bootstrap'));
+  });
 
 // Copy Web Fonts To Dist
 gulp.task('font', function() {
@@ -151,4 +168,4 @@ gulp.task('watch', function() {
 
 // gulp.task('build', ['rev']);
 
-gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs-copy', 'docs', 'watch']);
+gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs-copy', 'docs', 'watch', 'uncss']);
