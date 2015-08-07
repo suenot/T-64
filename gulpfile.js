@@ -1,18 +1,18 @@
-"use strict"; // Помогает увидеть где ошибка.
+"use strict";
 
-var gulp = require('gulp'), // Вызов функции gulp по умолчанию.
-    concatCss = require('gulp-concat-css'), // Склейка файлов. https://www.npmjs.com/package/gulp-concat-css
-    autoprefixer = require('gulp-autoprefixer'), // Авто префиксер. https://www.npmjs.com/package/gulp-autoprefixer
-    livereload = require('gulp-livereload'), // https://www.npmjs.com/package/gulp-livereload
-    jade = require('gulp-jade'), // Плагин для Jade
-    stylus = require('gulp-stylus'), // Плагин для Stylus
+var gulp = require('gulp'),
+    concatCss = require('gulp-concat-css'),
+    autoprefixer = require('gulp-autoprefixer'),
+    livereload = require('gulp-livereload'),
+    jade = require('gulp-jade'),
+    stylus = require('gulp-stylus'),
     browserSync = require('browser-sync'),
     newer = require('gulp-newer'),
-    plumber = require('gulp-plumber'),// Проверка на ощибки
+    plumber = require('gulp-plumber'),
     reload = browserSync.reload,
     rev_append = require('gulp-rev-append');
 
-//All browserSync
+// All browserSync
 gulp.task('server', function() {
   browserSync({
     server: {
@@ -36,7 +36,7 @@ gulp.task('stylus', function() {
         .pipe(browserSync.reload({stream: true}));
     });
 
-//gulp plugin for cache-busting files using query string file hash
+// Gulp plugin for cache-busting files using query string file hash
 gulp.task('rev_append', function() {
   gulp.src('./public/pages/main.html')
     .pipe(rev_append())
@@ -44,7 +44,7 @@ gulp.task('rev_append', function() {
     .pipe(gulp.dest('.'));
 });
 
-//Complite html
+// Complite html
 gulp.task('jade', function() {
   return gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
             .pipe(jade({
@@ -57,7 +57,7 @@ gulp.task('jade', function() {
           .pipe(browserSync.reload({stream: true}));
           });
 
-//creat index.html
+// Creat index.html
 gulp.task('index', function() {
   return gulp.src('assets/pages/index.jade')
             .pipe(jade({
@@ -70,7 +70,7 @@ gulp.task('index', function() {
           .pipe(browserSync.reload({stream: true}));
           });
 
-//Blocks
+// Blocks
 gulp.task('blocks', ['jade'], function() {
   return gulp.src('./assets/pages/blocks.jade')
             .pipe(jade({
