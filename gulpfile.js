@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     newer = require('gulp-newer'),
     plumber = require('gulp-plumber'),
     reload = browserSync.reload,
-    rev_append = require('gulp-rev-append');
+    rev_append = require('gulp-rev-append'),
+    uncss = require('gulp-uncss');
 
 // All browserSync
 gulp.task('server', function() {
@@ -29,9 +30,12 @@ gulp.task('stylus', function() {
             .pipe(plumber())
         .on('error', console.error.bind(console))
         .pipe(autoprefixer({
-                browsers: ['last 2 versions'],
+                browsers: ['last 4 versions'],
                 cascade: false
             }))
+        .pipe(uncss({
+            html: ['./public/pages/main.html']
+        }))
         .pipe(gulp.dest('public/app'))
         .pipe(browserSync.reload({stream: true}));
     });
