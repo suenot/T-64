@@ -123,7 +123,7 @@ gulp.task('docs', function() {
       });
 
 // Copy docs file functional At (docs)
-gulp.task('docs-copy', function() {
+gulp.task('docsFile', function() {
   return gulp.src(['assets/docs/*.css', 'assets/docs/*.js'])
           .pipe(newer('public/docs'))
           .pipe(gulp.dest('public/docs'))
@@ -142,9 +142,11 @@ gulp.task('watch', function() {
   gulp.watch('assets/pages/*',['blocks']);
   gulp.watch('assets/pages/index.jade', ['index']);
   gulp.watch('assets/pages/_*.jade', ['jade']);
-  gulp.watch('assets/docs/*.jade', ['jade']);
+  gulp.watch('assets/docs/**', ['jade']);
+  gulp.watch('assets/docs/**', ['stylus']);
+  gulp.watch('assets/docs/**/*.*', ['docsFile']);
 });
 
 // gulp.task('build', ['rev']);
 
-gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs-copy', 'docs', 'watch']);
+gulp.task('default', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'index', 'server', 'blocks', 'docs', 'docsFile', 'watch']);
