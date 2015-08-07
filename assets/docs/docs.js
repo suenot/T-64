@@ -7,8 +7,7 @@ $('document').ready(function(){
 		block = $(this).text();
 		$('#code-view').load('/blocks/' + block + '/' + block + '.html');
 		$.get('/blocks/' + block + '/' + block + '.html', function(data) {
-			data = data.replace(/<!--(.*?)-->/ig, '').substr(2);
-			console.log(data);
+			data = data.replace(/<!--(.*?)-->/ig, '').substr(1);
 			$('#code-html').text(data);
 			hljs.highlightBlock(document.getElementById('code-html'));
 		});
