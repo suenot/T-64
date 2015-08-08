@@ -14,7 +14,8 @@ var gulp = require('gulp'),
     webp = require('gulp-webp'),
     uncss = require('gulp-uncss'),
     fs = require("fs"),
-    postcss = require('gulp-postcss');
+    postcss = require('gulp-postcss'),
+    googlecdn = require('gulp-google-cdn');
 
 // All browserSync
 gulp.task('server', function() {
@@ -25,6 +26,11 @@ gulp.task('server', function() {
   });
 });
 
+// gulp.task('cdn', function () {
+//   return gulp.src('index.html')
+//     .pipe(googlecdn(require('./bower.json')))
+//     .pipe(gulp.dest('dist'));
+// });
 
 // Complite STYLUS and automatically Prefix CSS
 gulp.task('stylus', function() {
@@ -53,6 +59,9 @@ gulp.task('jade', ['stylus'], function() {
               pretty: true,
               basedir: 'assets'
             }))
+          .pipe(googlecdn(require('./bower.json'), {
+            cdn: require('cdnjs-cdn-data')
+          }))
           .pipe(plumber())
           .on('error', console.error.bind(console))
           .pipe(rev())

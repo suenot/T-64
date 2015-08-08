@@ -1,0 +1,11 @@
+{
+  "name": "app",
+  "version": "1.0.1",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "jquery.browser": "~0.0.8",
+    "normalize.css": "~3.0.3"
+  },
+  "devDependencies": {
+  }
+}
