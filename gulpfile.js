@@ -18,6 +18,35 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     postcss = require('gulp-postcss');
 
+if (!isWin) {
+  console.log('not win')
+    var filter = require('gulp-filter');
+    var svgSprite = require('gulp-svg-sprites');
+    var svg2png = require('gulp-svg2png');
+    gulp.task('svg-symbols', function () {
+         return gulp.src('assets/img/svg/source/*.svg')
+            .pipe(svgSprite({
+                svg: {
+                    sprite: 'sprite.svg'
+                },
+                preview: {
+                    sprite: 'index.html'
+                },
+                mode: 'symbols'
+            }))
+            .pipe(gulp.dest('assets/img/svg/symbols'));
+    });
+    gulp.task('svg-sprite', function () {
+         return gulp.src('assets/img/svg/source/*.svg')
+        .pipe(svgSprite())
+        .pipe(gulp.dest('assets/img/svg/sprite'))
+        .pipe(filter('**/*.svg'))
+        .pipe(svg2png())
+        .pipe(gulp.dest('assets/img/svg/sprite'));
+    });
+    gulp.task('svg', ['svg-symbols', 'svg-sprite']);
+};
+
 // All browserSync
 gulp.task('server', function() {
   browserSync({
@@ -57,8 +86,8 @@ gulp.task('jade', ['stylus'], function() {
             }))
           .pipe(plumber())
           .on('error', console.error.bind(console))
-          // .pipe(rev())
-          .pipe( gulpif( gutil.env.build, gulp.dest('build') ) )
+          .pipe(rev())
+          .pipe(gulp.dest('./public/'))
           .pipe(browserSync.reload({stream: true}));
           });
 
