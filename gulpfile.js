@@ -1,5 +1,5 @@
 "use strict";
-
+var isWin = /^win/.test(process.platform);
 var gulp = require('gulp'),
     concatCss = require('gulp-concat-css'),
     autoprefixer = require('gulp-autoprefixer'),
