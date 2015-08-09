@@ -14,6 +14,8 @@ var gulp = require('gulp'),
     webp = require('gulp-webp'),
     uncss = require('gulp-uncss'),
     fs = require("fs"),
+    gulpif = require('gulp-if'),
+    gutil = require('gulp-util'),
     postcss = require('gulp-postcss');
 
 // All browserSync
@@ -55,8 +57,8 @@ gulp.task('jade', ['stylus'], function() {
             }))
           .pipe(plumber())
           .on('error', console.error.bind(console))
-          .pipe(rev())
-          .pipe(gulp.dest('./public/'))
+          // .pipe(rev())
+          .pipe( gulpif( gutil.env.build, gulp.dest('build') ) )
           .pipe(browserSync.reload({stream: true}));
           });
 
