@@ -2,125 +2,12 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="svg6014"
-   version="1.1"
-   inkscape:version="0.91 r13725"
    width="310"
    height="382"
-   viewBox="0 0 310 382"
-   sodipodi:docname="front.svg">
-  <metadata
-     id="metadata6020">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs6018">
-    <pattern
-       y="0"
-       x="0"
-       height="6"
-       width="6"
-       patternUnits="userSpaceOnUse"
-       id="EMFhbasepattern" />
-  </defs>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="716"
-     id="namedview6016"
-     showgrid="false"
-     showguides="true"
-     inkscape:guide-bbox="true"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="52.347233"
-     inkscape:cy="236.07523"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg6014">
-    <sodipodi:guide
-       position="-67.84914,367.39392"
-       orientation="0,1"
-       id="guide6024" />
-    <sodipodi:guide
-       position="-91.680009,6.4003815"
-       orientation="0,1"
-       id="guide6066" />
-    <sodipodi:guide
-       position="7,241"
-       orientation="0,1"
-       id="guide6240" />
-    <sodipodi:guide
-       position="73.5,235.5"
-       orientation="0,1"
-       id="guide6242" />
-    <sodipodi:guide
-       position="142,222.5"
-       orientation="1,0"
-       id="guide6244" />
-    <sodipodi:guide
-       position="152,265"
-       orientation="1,0"
-       id="guide6246" />
-    <sodipodi:guide
-       position="167,235.5"
-       orientation="1,0"
-       id="guide6248" />
-    <sodipodi:guide
-       position="157.5,264"
-       orientation="1,0"
-       id="guide6250" />
-    <sodipodi:guide
-       position="206.5,70.5"
-       orientation="0,1"
-       id="guide6254" />
-    <sodipodi:guide
-       position="29,317"
-       orientation="0,1"
-       id="guide6260" />
-    <sodipodi:guide
-       position="30,225"
-       orientation="0,1"
-       id="guide6262" />
-    <sodipodi:guide
-       position="293.5,265"
-       orientation="1,0"
-       id="guide6339" />
-    <sodipodi:guide
-       position="95,277"
-       orientation="0,1"
-       id="guide6341" />
-    <sodipodi:guide
-       position="15.5,277"
-       orientation="1,0"
-       id="guide6349" />
-  </sodipodi:namedview>
+   viewBox="0 0 310 382">
   <rect
      style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.79999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="rect6034"
