@@ -14,9 +14,10 @@ var gulp = require('gulp'),
     webp = require('gulp-webp'),
     uncss = require('gulp-uncss'),
     fs = require("fs"),
+    postcss = require('gulp-postcss'),
     gulpif = require('gulp-if'),
     gutil = require('gulp-util'),
-    postcss = require('gulp-postcss');
+    googlecdn = require('gulp-google-cdn');
 
 if (!isWin) {
   console.log('not win')
@@ -84,6 +85,9 @@ gulp.task('jade', ['stylus'], function() {
               pretty: true,
               basedir: 'assets'
             }))
+          .pipe(googlecdn(require('./bower.json'), {
+            cdn: require('cdnjs-cdn-data')
+          }))
           .pipe(plumber())
           .on('error', console.error.bind(console))
           .pipe(rev())

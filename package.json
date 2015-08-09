@@ -27,9 +27,11 @@
   "homepage": "https://github.com/decore/decore-project-template/",
   "devDependencies": {
     "browser-sync": "^2.4.0",
+    "cdnjs-cdn-data": "^0.1.1",
     "css-mqpacker": "^3.1.0",
     "cssnano": "^2.1.1",
     "cssnext": "^1.8.3",
+    "google-cdn": "^1.0.0",
     "gulp": "^3.8.11",
     "gulp-assets": "^0.2.2",
     "gulp-autoprefixer": "^2.3.0",
@@ -38,6 +40,7 @@
     "gulp-concat-css": "^2.2.0",
     "gulp-copy": "0.0.2",
     "gulp-cssnano": "^1.1.0",
+    "gulp-google-cdn": "^2.0.0",
     "gulp-jade": "^1.0.1",
     "gulp-livereload": "^3.8.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
@@ -65,7 +68,9 @@
     "postcss-single-charset": "^0.3.0",
     "postcss-unique-selectors": "^1.0.0",
     "postcss-zindex": "^1.1.2",
-    "wiredep": "^3.0.0-beta"
+    "wiredep": "^3.0.0-beta",
+    "postcss-zindex": "^1.1.2",
+    "yandex-cdn": "0.0.12"
   },
   "optionalDependencies": {
     "gulp-filter": "^2.0.2",
@@ -75,5 +80,6 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+
   }
 }
