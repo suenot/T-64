@@ -186,16 +186,22 @@ gulp.task('watch', function() {
 });
 
 // BUILD
-gulp.task('uncss', ['app', 'jade', 'stylus'], function() {
-  return gulp.src('public/app/vendor/**/*.css')
+gulp.task('concat', function () {
+  return gulp.src(['public/app/**/*.css', '!public/app/vendor/bootstrap/bootstrap.css'])
+    .pipe(concatCss('concat.css'))
+    .pipe(gulp.dest('public/app/'));
+});
+
+gulp.task('uncss', ['concat'], function() {
+  return gulp.src('public/app/concat.css')
   .pipe(uncss({
     html: ['public/pages/main.html']
   }))
-  .pipe(gulp.dest('public/app/vendor/'));
+  .pipe(gulp.dest('public/app/'));
 });
 
 gulp.task('postcss', ['uncss'], function () {
-    return gulp.src('public/app/**/*.css')
+    return gulp.src('public/app/concat.css')
     .pipe(postcss([
       require('cssnext')(),
       require('css-mqpacker')(),
@@ -223,5 +229,5 @@ gulp.task('postcss', ['uncss'], function () {
 });
 
 gulp.task('main', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile']);
-gulp.task('default', ['main', 'watch']);
+gulp.task('default', ['main', 'watch', 'concat']);
 gulp.task('build', ['main', 'uncss', 'postcss']);
