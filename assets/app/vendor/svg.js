@@ -1,5 +1,5 @@
 $('document').ready(function(){
-	$('.icon').each(function(){
-		$(this).load($(this).data('icon'));
+	$('.isvg').each(function(){
+		$(this).load('/img/svg/' + $(this).data('icon') + '.svg').addClass($(this).data('icon'));
 	});
 });

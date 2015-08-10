@@ -70,8 +70,7 @@
     "postcss-single-charset": "^0.3.0",
     "postcss-unique-selectors": "^1.0.0",
     "postcss-zindex": "^1.1.2",
-    "wiredep": "^3.0.0-beta",
-    "yandex-cdn": "0.0.12"
+    "wiredep": "^3.0.0-beta"
   },
   "optionalDependencies": {
     "gulp-filter": "^2.0.2",
