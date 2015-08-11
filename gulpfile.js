@@ -21,6 +21,10 @@ var gulp = require('gulp'),
     vinylPaths = require('vinyl-paths'),
     googlecdn = require('gulp-google-cdn');
 
+var onError = function(err) {
+  gutil.beep();
+};
+
 if (!isWin) {
   console.log('not win')
     var filter = require('gulp-filter');
@@ -63,7 +67,7 @@ gulp.task('server', ['del'], function() {
 // Complite STYLUS and automatically Prefix CSS
 gulp.task('stylus', ['del'], function() {
   return gulp.src(['assets/app/**/*.styl', '!assets/**/_*.styl'])
-        .pipe(plumber())
+        .pipe(plumber({errorHandler: onError}))
         .pipe(stylus())
         .pipe(autoprefixer({
                 browsers: ['last 4 versions'],
@@ -82,7 +86,7 @@ gulp.task('webp', ['del'], function() {
 // Complite html
 gulp.task('jade', ['stylus', 'del'], function() {
   return gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: onError}))
     .pipe(jade({
       pretty: true,
       basedir: 'assets'
@@ -98,7 +102,7 @@ gulp.task('jade', ['stylus', 'del'], function() {
 // Creat index.html
 gulp.task('index', ['del'], function() {
   return gulp.src('assets/pages/index.jade')
-          .pipe(plumber())
+          .pipe(plumber({errorHandler: onError}))
           .pipe(jade({
             pretty: true,
             basedir: 'assets'
@@ -110,7 +114,7 @@ gulp.task('index', ['del'], function() {
 // Blocks
 gulp.task('blocks', ['jade', 'del'], function() {
   return gulp.src('./assets/pages/blocks.jade')
-          .pipe(plumber())
+          .pipe(plumber({errorHandler: onError}))
           .pipe(jade({
             pretty: true,
             basedir: 'assets'
@@ -190,7 +194,7 @@ gulp.task('watch', function() {
 
 // BUILD
 gulp.task('uncss', ['main'], function() {
-  return gulp.src(['public/app/*.css', '!public/app/app.css'])
+  return gulp.src(['public/app/*.css', '!public/app/app.css', '!public/app/animate.css'])
   .pipe(uncss({
     html: ['public/pages/main.html']
   }))
