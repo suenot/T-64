@@ -62,17 +62,16 @@ gulp.task('server', function() {
 
 // Complite STYLUS and automatically Prefix CSS
 gulp.task('stylus', function() {
-  return gulp.src(['assets/app/**/*.styl', '!assets/**/_*.styl'])
-            .pipe(stylus())
-            .pipe(plumber())
-        .on('error', console.error.bind(console))
+  gulp.src(['assets/app/**/*.styl', '!assets/**/_*.styl'])
+        .pipe(plumber())
+        .pipe(stylus())
         .pipe(autoprefixer({
                 browsers: ['last 4 versions'],
                 cascade: false
             }))
         .pipe(gulp.dest('public/app'))
         .pipe(browserSync.reload({stream: true}));
-    });
+});
 
 gulp.task('webp', function() {
   return gulp.src('assets/img/cards/*.jpg')
@@ -82,46 +81,43 @@ gulp.task('webp', function() {
 
 // Complite html
 gulp.task('jade', ['stylus'], function() {
-  return gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
-            .pipe(jade({
-              pretty: true,
-              basedir: 'assets'
-            }))
-          .pipe(googlecdn(require('./bower.json'), {
-            cdn: require('cdnjs-cdn-data')
-          }))
-          .pipe(plumber())
-          .on('error', console.error.bind(console))
-          .pipe(rev())
-          .pipe(gulp.dest('./public/'))
-          .pipe(browserSync.reload({stream: true}));
-          });
+  gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
+    .pipe(plumber())
+    .pipe(jade({
+      pretty: true,
+      basedir: 'assets'
+    }))
+    .pipe(googlecdn(require('./bower.json'), {
+      cdn: require('cdnjs-cdn-data')
+    }))
+    // .pipe(rev())
+    .pipe(gulp.dest('./public/'))
+    .pipe(browserSync.reload({stream: true}));
+});
 
 // Creat index.html
 gulp.task('index', function() {
   return gulp.src('assets/pages/index.jade')
-            .pipe(jade({
-              pretty: true,
-              basedir: 'assets'
-            }))
           .pipe(plumber())
-          .on('error', console.error.bind(console))
+          .pipe(jade({
+            pretty: true,
+            basedir: 'assets'
+          }))
           .pipe(gulp.dest('public'))
           .pipe(browserSync.reload({stream: true}));
-          });
+});
 
 // Blocks
 gulp.task('blocks', ['jade'], function() {
   return gulp.src('./assets/pages/blocks.jade')
-            .pipe(jade({
-              pretty: true,
-              basedir: 'assets'
-            }))
           .pipe(plumber())
-          .on('error', console.error.bind(console))
+          .pipe(jade({
+            pretty: true,
+            basedir: 'assets'
+          }))
           .pipe(gulp.dest('./public/pages/'))
           .pipe(browserSync.reload({stream: true}));
-          });
+});
 
 // Copy All Files At (images)
 gulp.task('images', function() {
@@ -129,14 +125,14 @@ gulp.task('images', function() {
           .pipe(newer('public/img'))
           .pipe(gulp.dest('public/img'))
           .pipe(browserSync.reload({stream: true}));
-      });
+});
 
 gulp.task('_images', function() {
   return gulp.src('assets/_img/**')
           .pipe(newer('public/_img'))
           .pipe(gulp.dest('public/_img'))
           .pipe(browserSync.reload({stream: true}));
-      });
+});
 
 // Copy All Files At (app)
 gulp.task('app', function() {
@@ -144,7 +140,7 @@ gulp.task('app', function() {
           .pipe(newer('public/app/vendor'))
           .pipe(gulp.dest('public/app/vendor'))
           .pipe(browserSync.reload({stream: true}));
-      });
+});
 
 // Copy Web Fonts To Dist
 gulp.task('font', function() {
@@ -152,7 +148,7 @@ gulp.task('font', function() {
           .pipe(newer('public/font'))
           .pipe(gulp.dest('public/font'))
           .pipe(browserSync.reload({stream: true}));
-      });
+});
 
 // Copy All blocks *.styl and *.jade At (blocks)
 gulp.task('docs', function() {
@@ -160,7 +156,7 @@ gulp.task('docs', function() {
           .pipe(newer('public/blocks'))
           .pipe(gulp.dest('public/blocks'))
           .pipe(browserSync.reload({stream: true}));
-      });
+});
 
 // Copy docs file functional At (docs)
 gulp.task('docsFile', function() {
@@ -168,7 +164,7 @@ gulp.task('docsFile', function() {
           .pipe(newer('public/docs'))
           .pipe(gulp.dest('public/docs'))
           .pipe(browserSync.reload({stream: true}));
-      });
+});
 
 gulp.task('del', function () {
   return gulp.src(['public/*', '!public/CNAME', '!public/.git'])
