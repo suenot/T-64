@@ -186,13 +186,13 @@ gulp.task('watch', function() {
 });
 
 // BUILD
-gulp.task('concat', ['main'], function () {
+gulp.task('concatCss', ['main'], function () {
   return gulp.src(['public/app/vendor/bootstrap/bootstrap.css', 'public/app/**/*.css'])
     .pipe(concatCss('concat.css'))
     .pipe(gulp.dest('public/app/'));
 });
 
-gulp.task('uncss', ['concat'], function() {
+gulp.task('uncss', ['concatCss'], function() {
   return gulp.src('public/app/concat.css')
   .pipe(uncss({
     html: ['public/pages/main.html']
@@ -229,5 +229,5 @@ gulp.task('postcss', ['uncss'], function () {
 });
 
 gulp.task('main', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile']);
-gulp.task('default', ['main', 'watch', 'concat']);
-gulp.task('build', ['main', 'uncss', 'postcss']);
+gulp.task('default', ['main', 'watch', 'concatCss']);
+gulp.task('build', ['main', 'concatCss', 'uncss', 'postcss']);
