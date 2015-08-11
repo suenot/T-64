@@ -17,6 +17,8 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     gulpif = require('gulp-if'),
     gutil = require('gulp-util'),
+    del = require('del'),
+    vinylPaths = require('vinyl-paths'),
     googlecdn = require('gulp-google-cdn');
 
 if (!isWin) {
@@ -168,6 +170,11 @@ gulp.task('docsFile', function() {
           .pipe(browserSync.reload({stream: true}));
       });
 
+gulp.task('del', function () {
+  return gulp.src(['public/*', '!public/CNAME', '!public/.git'])
+    .pipe(vinylPaths(del))
+});
+
 // Watch everything
 gulp.task('watch', function() {
   gulp.watch('assets/blocks/**/*.styl',['stylus']);
@@ -228,6 +235,9 @@ gulp.task('postcss', ['uncss'], function () {
     .pipe(gulp.dest('public/app'));
 });
 
-gulp.task('main', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile']);
-gulp.task('default', ['main', 'watch', 'concatCss']);
+gulp.task('main', ['del'], function() {
+  gulp.start('jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile');
+});
+
+gulp.task('default', ['main', 'watch']);
 gulp.task('build', ['main', 'concatCss', 'uncss', 'postcss']);

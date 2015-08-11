@@ -31,8 +31,9 @@
     "css-mqpacker": "^3.1.0",
     "cssnano": "^2.1.1",
     "cssnext": "^1.8.3",
+    "del": "^1.2.0",
     "google-cdn": "^1.0.0",
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.0",
     "gulp-assets": "^0.2.2",
     "gulp-autoprefixer": "^2.3.0",
     "gulp-clean": "^0.3.1",
@@ -43,6 +44,7 @@
     "gulp-filter": "^2.0.2",
     "gulp-google-cdn": "^2.0.0",
     "gulp-if": "^1.2.5",
+    "gulp-ignore": "^1.2.1",
     "gulp-jade": "^1.0.1",
     "gulp-livereload": "^3.8.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
@@ -72,6 +74,7 @@
     "postcss-single-charset": "^0.3.0",
     "postcss-unique-selectors": "^1.0.0",
     "postcss-zindex": "^1.1.2",
+    "vinyl-paths": "^1.0.0",
     "wiredep": "^3.0.0-beta"
   },
   "optionalDependencies": {
