@@ -186,8 +186,8 @@ gulp.task('watch', function() {
 });
 
 // BUILD
-gulp.task('concat', function () {
-  return gulp.src(['public/app/**/*.css', '!public/app/vendor/bootstrap/bootstrap.css'])
+gulp.task('concat', ['main'], function () {
+  return gulp.src(['public/app/vendor/bootstrap/bootstrap.css', 'public/app/**/*.css'])
     .pipe(concatCss('concat.css'))
     .pipe(gulp.dest('public/app/'));
 });
