@@ -17,6 +17,7 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     gulpif = require('gulp-if'),
     gutil = require('gulp-util'),
+    clean = require('gulp-clean'),
     googlecdn = require('gulp-google-cdn');
 
 if (!isWin) {
@@ -168,6 +169,11 @@ gulp.task('docsFile', function() {
           .pipe(browserSync.reload({stream: true}));
       });
 
+gulp.task('clean', function () {
+  return gulp.src('public', {read: false})
+    .pipe(clean());
+});
+
 // Watch everything
 gulp.task('watch', function() {
   gulp.watch('assets/blocks/**/*.styl',['stylus']);
@@ -223,5 +229,7 @@ gulp.task('postcss', ['uncss'], function () {
 });
 
 gulp.task('main', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile']);
-gulp.task('default', ['main', 'watch']);
+gulp.task('default', ['clean'], function() {
+  gulp.start('main', 'watch');
+});
 gulp.task('build', ['main', 'uncss', 'postcss']);
