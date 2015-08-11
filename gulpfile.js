@@ -51,7 +51,7 @@ if (!isWin) {
 };
 
 // All browserSync
-gulp.task('server', function() {
+gulp.task('server', ['del'], function() {
   browserSync({
     server: {
       baseDir: "public"
@@ -61,8 +61,8 @@ gulp.task('server', function() {
 
 
 // Complite STYLUS and automatically Prefix CSS
-gulp.task('stylus', function() {
-  gulp.src(['assets/app/**/*.styl', '!assets/**/_*.styl'])
+gulp.task('stylus', ['del'], function() {
+  return gulp.src(['assets/app/**/*.styl', '!assets/**/_*.styl'])
         .pipe(plumber())
         .pipe(stylus())
         .pipe(autoprefixer({
@@ -73,15 +73,15 @@ gulp.task('stylus', function() {
         .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('webp', function() {
+gulp.task('webp', ['del'], function() {
   return gulp.src('assets/img/cards/*.jpg')
     .pipe(webp())
     .pipe(gulp.dest('public/img/cards'));
 });
 
 // Complite html
-gulp.task('jade', ['stylus'], function() {
-  gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
+gulp.task('jade', ['stylus', 'del'], function() {
+  return gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
     .pipe(plumber())
     .pipe(jade({
       pretty: true,
@@ -96,7 +96,7 @@ gulp.task('jade', ['stylus'], function() {
 });
 
 // Creat index.html
-gulp.task('index', function() {
+gulp.task('index', ['del'], function() {
   return gulp.src('assets/pages/index.jade')
           .pipe(plumber())
           .pipe(jade({
@@ -108,7 +108,7 @@ gulp.task('index', function() {
 });
 
 // Blocks
-gulp.task('blocks', ['jade'], function() {
+gulp.task('blocks', ['jade', 'del'], function() {
   return gulp.src('./assets/pages/blocks.jade')
           .pipe(plumber())
           .pipe(jade({
@@ -120,14 +120,14 @@ gulp.task('blocks', ['jade'], function() {
 });
 
 // Copy All Files At (images)
-gulp.task('images', function() {
+gulp.task('images', ['del'], function() {
   return gulp.src(['assets/img/**', '!assets/img/svg', '!assets/img/png'])
           .pipe(newer('public/img'))
           .pipe(gulp.dest('public/img'))
           .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('_images', function() {
+gulp.task('_images', ['del'], function() {
   return gulp.src('assets/_img/**')
           .pipe(newer('public/_img'))
           .pipe(gulp.dest('public/_img'))
@@ -135,15 +135,15 @@ gulp.task('_images', function() {
 });
 
 // Copy All Files At (app)
-gulp.task('app', function() {
-  return gulp.src(['assets/app/vendor/*.*', 'assets/app/vendor/**/*.*'])
-          .pipe(newer('public/app/vendor'))
-          .pipe(gulp.dest('public/app/vendor'))
+gulp.task('app', ['del'], function() {
+  return gulp.src(['assets/app/*.js', 'assets/app/*.css'])
+          .pipe(newer('public/app'))
+          .pipe(gulp.dest('public/app'))
           .pipe(browserSync.reload({stream: true}));
 });
 
 // Copy Web Fonts To Dist
-gulp.task('font', function() {
+gulp.task('font', ['del'], function() {
   return gulp.src('assets/font/**')
           .pipe(newer('public/font'))
           .pipe(gulp.dest('public/font'))
@@ -151,7 +151,7 @@ gulp.task('font', function() {
 });
 
 // Copy All blocks *.styl and *.jade At (blocks)
-gulp.task('docs', function() {
+gulp.task('docs', ['del'], function() {
   return gulp.src(['assets/blocks/*.*', 'assets/blocks/**/*.*'])
           .pipe(newer('public/blocks'))
           .pipe(gulp.dest('public/blocks'))
@@ -159,7 +159,7 @@ gulp.task('docs', function() {
 });
 
 // Copy docs file functional At (docs)
-gulp.task('docsFile', function() {
+gulp.task('docsFile', ['del'], function() {
   return gulp.src(['assets/docs/*.css', 'assets/docs/*.js'])
           .pipe(newer('public/docs'))
           .pipe(gulp.dest('public/docs'))
@@ -168,7 +168,7 @@ gulp.task('docsFile', function() {
 
 gulp.task('del', function () {
   return gulp.src(['public/*', '!public/CNAME', '!public/.git'])
-    .pipe(vinylPaths(del))
+    .pipe(vinylPaths(del));
 });
 
 // Watch everything
@@ -189,21 +189,27 @@ gulp.task('watch', function() {
 });
 
 // BUILD
-gulp.task('concatCss', ['main'], function () {
-  return gulp.src(['public/app/vendor/bootstrap/bootstrap.css', 'public/app/**/*.css'])
-    .pipe(concatCss('concat.css'))
-    .pipe(gulp.dest('public/app/'));
-});
-
-gulp.task('uncss', ['concatCss'], function() {
-  return gulp.src('public/app/concat.css')
+gulp.task('uncss', ['main'], function() {
+  return gulp.src(['public/app/*.css', '!public/app/app.css'])
   .pipe(uncss({
     html: ['public/pages/main.html']
   }))
   .pipe(gulp.dest('public/app/'));
 });
 
-gulp.task('postcss', ['uncss'], function () {
+gulp.task('concatCss', ['uncss'], function () {
+  return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css'])
+    .pipe(concatCss('concat.css'))
+    .pipe(gulp.dest('public/app/'));
+});
+
+gulp.task('delBuild', ['concatCss'], function () {
+  return gulp.src(['public/app/*.css', '!public/app/concat.css'])
+    .pipe(vinylPaths(del));
+});
+
+
+gulp.task('postcss', ['concatCss'], function () {
     return gulp.src('public/app/concat.css')
     .pipe(postcss([
       require('cssnext')(),
@@ -231,9 +237,6 @@ gulp.task('postcss', ['uncss'], function () {
     .pipe(gulp.dest('public/app'));
 });
 
-gulp.task('main', ['del'], function() {
-  gulp.start('jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile');
-});
-
+gulp.task('main', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile']);
 gulp.task('default', ['main', 'watch']);
-gulp.task('build', ['main', 'concatCss', 'uncss', 'postcss']);
+gulp.task('build', ['main', 'uncss', 'concatCss', 'delBuild', 'postcss']);
