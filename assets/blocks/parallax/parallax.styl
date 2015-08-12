@@ -2,6 +2,10 @@
 	from { background-position: center top; }
 	to { background-position: 100% 0; }
 }
+@keyframes animatedBackground2 {
+	from { background-position: 100% 0; }
+	to { background-position: center top; }
+}
 .parallax
 	background-image: url('/img/parallax/parallax.webp')
 	background-position: center top
@@ -11,7 +15,7 @@
 	height: 490px
 	position: relative
 	overflow: hidden
-	animation: animatedBackground 20s linear infinite
+	animation: animatedBackground 20s linear infinite, animatedBackground2 20s 20s linear infinite
 	@media (max-width: $screen-ipad-max)
 		height: 300px
 	&:before

@@ -25,6 +25,54 @@ var onError = function(err) {
   gutil.beep();
 };
 
+// Sourse files
+var date        = new Date().toLocaleString(),
+    src         = {};
+
+src.styl = {
+    'files': [
+        'assets/app/**/*.styl'
+    ],
+    'dest': 'public/app',
+    'name': 'all.min.css',
+    'ignore': 'assets/**/_*.styl'
+};
+
+src.jade = {
+    'files': [
+        'assets/**/*.jade'
+    ],
+    'dest': 'public/',
+    'ignore': [
+    'assets/**/_*.jade',
+    'assets/pages/index.jade',
+    'assets/pages/blocks.jade'
+    ]
+};
+
+src.image = {
+    'files': [
+        'assets/img/**'
+    ],
+    'dest': 'public/img',
+    'ignore': [
+    'assets/img/svg',
+    'assets/img/png'
+    ]
+};
+
+src.app = {
+    'files': [
+        'assets/app/*.js',
+        'assets/app/*.css'
+    ],
+    'dest': 'public/app'
+};
+
+// Ignored files
+src.styl.files.push('!'+src.styl.ignore);
+src.jade.files.push('!'+src.jade.ignore);
+src.image.files.push('!'+src.image.ignore);
 if (!isWin) {
   console.log('not win')
     var filter = require('gulp-filter');
@@ -67,7 +115,7 @@ gulp.task('server', function() {
 
 // Complite STYLUS and automatically Prefix CSS
 gulp.task('stylus', function() {
-  return gulp.src(['assets/app/**/*.styl', '!assets/**/_*.styl'])
+  return gulp.src(src.styl.files)
         .pipe(plumber({errorHandler: onError}))
         .pipe(stylus())
         .pipe(autoprefixer({
@@ -86,7 +134,7 @@ gulp.task('webp', function() {
 
 // Complite html
 gulp.task('jade', ['stylus'], function() {
-  return gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
+  return gulp.src(src.jade.files)
     .pipe(plumber({errorHandler: onError}))
     .pipe(jade({
       pretty: true,
@@ -126,7 +174,7 @@ gulp.task('blocks', ['jade'], function() {
 
 // Copy All Files At (images)
 gulp.task('images', function() {
-  return gulp.src(['assets/img/**', '!assets/img/svg', '!assets/img/png'])
+  return gulp.src(src.image.files)
           .pipe(newer('public/img'))
           .pipe(gulp.dest('public/img'))
           .pipe(browserSync.reload({stream: true}));
@@ -141,7 +189,7 @@ gulp.task('_images', function() {
 
 // Copy All Files At (app)
 gulp.task('app', function() {
-  return gulp.src(['assets/app/*.js', 'assets/app/*.css'])
+  return gulp.src(src.app.files)
           .pipe(newer('public/app'))
           .pipe(gulp.dest('public/app'))
           .pipe(browserSync.reload({stream: true}));
