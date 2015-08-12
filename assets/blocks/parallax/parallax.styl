@@ -29,7 +29,7 @@
 		position: absolute
 		margin: 0 auto
 		box-shadow: 0px 0px 14px 4px rgba(0,0,0,0.2)
-		@media (max-width: $screen-xs-max)
+		@media (max-width: $screen-ipad-max)
 			display: none
 	&__maquetteFront
 		bottom: -5px
@@ -64,6 +64,8 @@
 		right: calc(50% - 390px)
 		animation: slideInRight 1s 1 ease-out
 		animation-fill-mode: backwards
+		@media (max-width: $screen-xs-max)
+			right: calc(50% - 200px)
 	&__afterAnimation1
 		top: 28%
 		right: -19%
@@ -77,6 +79,8 @@
 		left: calc(50% - 390px)
 		animation: slideInLeft 1s 1 ease-out
 		animation-fill-mode: backwards
+		@media (max-width: $screen-xs-max)
+			left: calc(50% - 200px)
 	&__afterAnimation5
 		left: -27%
 		bottom: 23%
