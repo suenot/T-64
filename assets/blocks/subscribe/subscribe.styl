@@ -1,12 +1,12 @@
 .subscribe
 	height: 85px
 	background-color: #efefef
-	@media (max-width: $screen-sm-min)
+	@media (max-width: $screen-phone-max)
 		height: 150px
 	&__wrap
 		display: flex
 		height: 85px
-		@media (max-width: $screen-sm-min)
+		@media (max-width: $screen-phone-max)
 			height: auto
 			width: 100%
 	&__info
@@ -14,7 +14,7 @@
 		margin: auto
 		height: 45px
 		width: 600px
-		@media (max-width: $screen-sm-min)
+		@media (max-width: $screen-phone-max)
 			flex-flow: column nowrap
 			justify-content: flex-start
 			height: auto
@@ -26,18 +26,18 @@
 		margin-right: 35px
 		text-transform: uppercase
 		color: #405770
-		@media (max-width: $screen-sm-min)
+		@media (max-width: $screen-phone-max)
 			margin-bottom: 15px
 			margin-right: 0
 	&__form
 		height: 45px
 		width: 415px
 		position: relative
-		@media (max-width: $screen-sm-min)
+		@media (max-width: $screen-phone-max)
 			height: auto
 			width: 100%
 	&__inputWrap
-		@media (max-width: $screen-sm-min)
+		@media (max-width: $screen-phone-max)
 			width: 80%
 			margin: 0 auto
 			margin-right: 45px
@@ -54,22 +54,22 @@
 		&:focus
 			border-color: #e1e1e1
 			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), inset 0 0 8px rgba(102, 175, 233, .6)
-		@media (max-width: $screen-sm-min)
+		@media (max-width: $screen-phone-max)
 			display: block
 			width: 100%
 			float: right
 	&__button
 		position: absolute
-		right: 5px
+		right: 10px
 		top: 0
 		height: 45px
 		width: 45px
 		background-color: #0082d5
 		border-radius: 0 4px 4px 0
 		border: none
-		@media (max-width: $screen-sm-min)
+		@media (max-width: $screen-phone-max)
 			position: absolute
-			right: 0
+			right: 5px
 			top: 0
 			left: auto
 	&__iconArrow
