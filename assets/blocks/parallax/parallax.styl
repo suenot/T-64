@@ -18,6 +18,7 @@
 		opacity: 0.3
 	&__afterAnimation1, &__afterAnimation2, &__afterAnimation3, &__afterAnimation4, &__afterAnimation5, &__afterAnimation6
 		position: absolute
+		opacity: 0
 		p
 			position: relative
 			text-transform: uppercase
@@ -41,22 +42,25 @@
 	&__afterAnimation2
 		top: -15%
 		left: 36%
-		animation: fadeOut 3.5s 1 ease-out
-		animation-delay: -2s
+		animation: fadeOut 1s 1 ease-out
+		animation-delay: .5s
+		animation-fill-mode: forwards
 		p
 			right: 17px
 	&__afterAnimation3
 		top: -11%
 		right: 11%
-		animation: fadeOut 4s 1
-		animation-delay: -2s
+		animation: fadeOut 1s 1
+		animation-delay: 2.5s
+		animation-fill-mode: forwards
 		p
 			left: 15px
 	&__afterAnimation4
 		top: 4%
 		right: -15%
-		animation: fadeOut 3.8s 1 ease-out
-		animation-delay: -2.5s
+		animation: fadeOut 1s 1 ease-out
+		animation-delay: 1.5s
+		animation-fill-mode: forwards
 		p
 			left: 40px
 	&__maquetteBack1
@@ -75,8 +79,9 @@
 	&__afterAnimation1
 		top: 28%
 		right: -19%
-		animation: fadeOut 3s 1 ease-out
-		animation-delay: -2s
+		animation: fadeOut 1s 1 ease-out
+		animation-delay: 3s
+		animation-fill-mode: forwards
 		p
 			font-size: 20px
 			left: 25px
@@ -96,12 +101,14 @@
 	&__afterAnimation5
 		left: -27%
 		bottom: 23%
-		animation: fadeOut 5s 1 ease-out
-		animation-delay: -2.5s
+		animation: fadeOut 1s 1 ease-out
+		animation-delay: 1s
+		animation-fill-mode: forwards
 	&__afterAnimation6
 		left: -27%
 		bottom: 70%
-		animation: fadeOut 3.3s 1 ease-out
-		animation-delay: -2s
+		animation: fadeOut 1s 1 ease-out
+		animation-delay: 2s
+		animation-fill-mode: forwards
 		p
 			right: 55px
