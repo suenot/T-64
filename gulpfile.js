@@ -19,6 +19,7 @@ var gulp = require('gulp'),
     del = require('del'),
     vinylPaths = require('vinyl-paths'),
     runSequence = require('gulp-run-sequence'),
+    minifyHTML = require('gulp-minify-html'),
     googlecdn = require('gulp-google-cdn');
 
 var onError = function(err) {
@@ -250,6 +251,12 @@ gulp.task('uncss', ['main'], function() {
   .pipe(gulp.dest('public/app/'));
 });
 
+gulp.task('minify-html', ['uncss'], function() {
+  return gulp.src('public/pages/main.html')
+    .pipe(minifyHTML())
+    .pipe(gulp.dest('public/pages/min'));
+});
+
 gulp.task('concatCss', ['uncss'], function () {
   return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
     .pipe(concatCss('concat.css'))
@@ -294,4 +301,4 @@ gulp.task('main', function(cb) {
   runSequence('del', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile'], cb);
 });
 gulp.task('default', ['main', 'watch']);
-gulp.task('build', ['main', 'uncss', 'concatCss', 'delBuild', 'postcss']);
+gulp.task('build', ['main', 'uncss', 'minify-html', 'concatCss', 'delBuild', 'postcss']);
