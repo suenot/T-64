@@ -64,8 +64,14 @@
 		right: calc(50% - 390px)
 		animation: slideInRight 1s 1 linear
 		animation-fill-mode: backwards
+		@media (max-width: 1080px)
+			right: calc(50% - 300px)
+		@media (max-width: 900px)
+			right: calc(50% - 230px)
 		@media (max-width: $screen-xs-max)
 			right: calc(50% - 200px)
+		@media (max-width: 700px)
+			right: calc(50% - 180px)
 	&__afterAnimation1
 		top: 28%
 		right: -19%
@@ -79,8 +85,14 @@
 		left: calc(50% - 390px)
 		animation: slideInLeft 1s 1 linear
 		animation-fill-mode: backwards
+		@media (max-width: 1080px)
+			left: calc(50% - 300px)
+		@media (max-width: 900px)
+			left: calc(50% - 230px)
 		@media (max-width: $screen-xs-max)
 			left: calc(50% - 200px)
+		@media (max-width: 700px)
+			left: calc(50% - 180px)
 	&__afterAnimation5
 		left: -27%
 		bottom: 23%
