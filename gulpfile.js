@@ -195,7 +195,7 @@ gulp.task('watch', function() {
 
 // BUILD
 gulp.task('uncss', ['main'], function() {
-  return gulp.src(['public/app/*.css', '!public/app/app.css', '!public/app/animate.css'])
+  return gulp.src(['public/app/*.css', '!public/app/app.css'])
   .pipe(uncss({
     html: ['public/pages/main.html']
   }))
@@ -203,7 +203,7 @@ gulp.task('uncss', ['main'], function() {
 });
 
 gulp.task('concatCss', ['uncss'], function () {
-  return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css'])
+  return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
     .pipe(concatCss('concat.css'))
     .pipe(gulp.dest('public/app/'));
 });
