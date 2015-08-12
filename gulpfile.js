@@ -19,6 +19,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     del = require('del'),
     vinylPaths = require('vinyl-paths'),
+    runSequence = require('gulp-run-sequence'),
     googlecdn = require('gulp-google-cdn');
 
 var onError = function(err) {
@@ -55,7 +56,7 @@ if (!isWin) {
 };
 
 // All browserSync
-gulp.task('server', ['del'], function() {
+gulp.task('server', function() {
   browserSync({
     server: {
       baseDir: "public"
@@ -65,26 +66,26 @@ gulp.task('server', ['del'], function() {
 
 
 // Complite STYLUS and automatically Prefix CSS
-gulp.task('stylus', ['del'], function() {
+gulp.task('stylus', function() {
   return gulp.src(['assets/app/**/*.styl', '!assets/**/_*.styl'])
         .pipe(plumber({errorHandler: onError}))
         .pipe(stylus())
         .pipe(autoprefixer({
                 browsers: ['last 4 versions'],
                 cascade: false
-            }))
+        }))
         .pipe(gulp.dest('public/app'))
         .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('webp', ['del'], function() {
+gulp.task('webp', function() {
   return gulp.src('assets/img/cards/*.jpg')
     .pipe(webp())
     .pipe(gulp.dest('public/img/cards'));
 });
 
 // Complite html
-gulp.task('jade', ['stylus', 'del'], function() {
+gulp.task('jade', ['stylus'], function() {
   return gulp.src(['assets/**/*.jade', '!assets/**/_*.jade', '!assets/pages/index.jade', '!./assets/pages/blocks.jade'])
     .pipe(plumber({errorHandler: onError}))
     .pipe(jade({
@@ -100,7 +101,7 @@ gulp.task('jade', ['stylus', 'del'], function() {
 });
 
 // Creat index.html
-gulp.task('index', ['del'], function() {
+gulp.task('index', function() {
   return gulp.src('assets/pages/index.jade')
           .pipe(plumber({errorHandler: onError}))
           .pipe(jade({
@@ -112,7 +113,7 @@ gulp.task('index', ['del'], function() {
 });
 
 // Blocks
-gulp.task('blocks', ['jade', 'del'], function() {
+gulp.task('blocks', ['jade'], function() {
   return gulp.src('./assets/pages/blocks.jade')
           .pipe(plumber({errorHandler: onError}))
           .pipe(jade({
@@ -124,14 +125,14 @@ gulp.task('blocks', ['jade', 'del'], function() {
 });
 
 // Copy All Files At (images)
-gulp.task('images', ['del'], function() {
+gulp.task('images', function() {
   return gulp.src(['assets/img/**', '!assets/img/svg', '!assets/img/png'])
           .pipe(newer('public/img'))
           .pipe(gulp.dest('public/img'))
           .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('_images', ['del'], function() {
+gulp.task('_images', function() {
   return gulp.src('assets/_img/**')
           .pipe(newer('public/_img'))
           .pipe(gulp.dest('public/_img'))
@@ -139,7 +140,7 @@ gulp.task('_images', ['del'], function() {
 });
 
 // Copy All Files At (app)
-gulp.task('app', ['del'], function() {
+gulp.task('app', function() {
   return gulp.src(['assets/app/*.js', 'assets/app/*.css'])
           .pipe(newer('public/app'))
           .pipe(gulp.dest('public/app'))
@@ -147,7 +148,7 @@ gulp.task('app', ['del'], function() {
 });
 
 // Copy Web Fonts To Dist
-gulp.task('font', ['del'], function() {
+gulp.task('font', function() {
   return gulp.src('assets/font/**')
           .pipe(newer('public/font'))
           .pipe(gulp.dest('public/font'))
@@ -155,7 +156,7 @@ gulp.task('font', ['del'], function() {
 });
 
 // Copy All blocks *.styl and *.jade At (blocks)
-gulp.task('docs', ['del'], function() {
+gulp.task('docs', function() {
   return gulp.src(['assets/blocks/*.*', 'assets/blocks/**/*.*'])
           .pipe(newer('public/blocks'))
           .pipe(gulp.dest('public/blocks'))
@@ -163,7 +164,7 @@ gulp.task('docs', ['del'], function() {
 });
 
 // Copy docs file functional At (docs)
-gulp.task('docsFile', ['del'], function() {
+gulp.task('docsFile', function() {
   return gulp.src(['assets/docs/*.css', 'assets/docs/*.js'])
           .pipe(newer('public/docs'))
           .pipe(gulp.dest('public/docs'))
@@ -241,6 +242,8 @@ gulp.task('postcss', ['concatCss'], function () {
     .pipe(gulp.dest('public/app'));
 });
 
-gulp.task('main', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile']);
+gulp.task('main', function(cb) {
+  runSequence('del', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile'], cb);
+});
 gulp.task('default', ['main', 'watch']);
 gulp.task('build', ['main', 'uncss', 'concatCss', 'delBuild', 'postcss']);
