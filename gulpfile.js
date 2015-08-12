@@ -20,6 +20,9 @@ var gulp = require('gulp'),
     vinylPaths = require('vinyl-paths'),
     runSequence = require('gulp-run-sequence'),
     minifyHTML = require('gulp-minify-html'),
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant'),
+    imageminWebp = require('imagemin-webp'),
     googlecdn = require('gulp-google-cdn');
 
 var onError = function(err) {
@@ -181,6 +184,22 @@ gulp.task('images', function() {
           .pipe(browserSync.reload({stream: true}));
 });
 
+gulp.task('imagemin', ['main'], function () {
+    return gulp.src('public/img/**/*.*')
+        .pipe(imagemin({
+            progressive: true,
+            optimizationLevel: 1,
+            multipass: true,
+            svgoPlugins: [
+              { removeViewBox: false },               // don't remove the viewbox atribute from the SVG
+              { removeUselessStrokeAndFill: false },  // don't remove Useless Strokes and Fills
+              { removeEmptyAttrs: false }             // don't remove Empty Attributes from the SVG
+            ],
+            use: [pngquant({quality: '80'}), imageminWebp()]
+        }))
+        .pipe(gulp.dest('public/img'));
+});
+
 gulp.task('_images', function() {
   return gulp.src('assets/_img/**')
           .pipe(newer('public/_img'))
@@ -301,4 +320,4 @@ gulp.task('main', function(cb) {
   runSequence('del', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile'], cb);
 });
 gulp.task('default', ['main', 'watch']);
-gulp.task('build', ['main', 'uncss', 'minify-html', 'concatCss', 'delBuild', 'postcss']);
+gulp.task('build', ['main', 'imagemin', 'uncss', 'minify-html', 'concatCss', 'delBuild', 'postcss']);
