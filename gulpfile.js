@@ -131,9 +131,9 @@ gulp.task('stylus', function() {
 });
 
 gulp.task('webp', function() {
-  return gulp.src('assets/img/cards/*.jpg')
+  return gulp.src('assets/img/**/*.jpg')
     .pipe(webp())
-    .pipe(gulp.dest('public/img/cards'));
+    .pipe(gulp.dest('public/img'));
 });
 
 // Complite html
@@ -191,11 +191,44 @@ gulp.task('imagemin', ['main'], function () {
             optimizationLevel: 1,
             multipass: true,
             svgoPlugins: [
-              { removeViewBox: false },               // don't remove the viewbox atribute from the SVG
-              { removeUselessStrokeAndFill: false },  // don't remove Useless Strokes and Fills
-              { removeEmptyAttrs: false }             // don't remove Empty Attributes from the SVG
+               // { cleanupAttrs: false },
+               // { removeDoctype: false },
+               // { removeXMLProcInst: false },
+               // { removeComments: false },
+               // { removeMetadata: false },
+               // { removeTitle: false },
+               // { removeDesc: false },
+               // { removeUselessDefs: false },
+               // { removeEditorsNSData: false },
+               // { removeEmptyAttrs: false },
+               // { removeHiddenElems: false },
+               // { removeEmptyText: false },
+               // { removeEmptyContainers: false },
+               // { removeViewBox: false },
+               // { cleanUpEnableBackground: false },
+               // { convertStyleToAttrs: false },
+               // { convertColors: false },
+               // { convertPathData: false },
+               // { convertTransform: false },
+               // { removeUnknownsAndDefaults: false },
+               // { removeNonInheritableGroupAttrs: false },
+               // { removeUselessStrokeAndFill: false },
+               // { removeUnusedNS: false },
+               // { cleanupIDs: false },
+               // { cleanupNumericValues: false },
+               // { moveElemsAttrsToGroup: false },
+               // { moveGroupAttrsToElems: false },
+               // { collapseGroups: false },
+               // { removeRasterImages: false },
+               // { mergePaths: false },
+               // { convertShapeToPath: false },
+               // { sortAttrs: false },
+               // { transformsWithOnePath: false },
+               // { removeDimensions: false },
+               // { removeAttrs: false },
+               // { addClassesToSVGElemen: false }
             ],
-            use: [pngquant({quality: '80'}), imageminWebp()]
+            use: [pngquant({quality: '75'}), imageminWebp({quality: 75})]
         }))
         .pipe(gulp.dest('public/img'));
 });
