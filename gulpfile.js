@@ -3,7 +3,6 @@ var isWin = /^win/.test(process.platform);
 var gulp = require('gulp'),
     concatCss = require('gulp-concat-css'),
     autoprefixer = require('gulp-autoprefixer'),
-    livereload = require('gulp-livereload'),
     jade = require('gulp-jade'),
     stylus = require('gulp-stylus'),
     browserSync = require('browser-sync'),
@@ -60,7 +59,8 @@ gulp.task('server', function() {
   browserSync({
     server: {
       baseDir: "public"
-    }
+    },
+    open: false
   });
 });
 
