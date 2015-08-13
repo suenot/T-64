@@ -23,6 +23,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     imageminWebp = require('imagemin-webp'),
+    sftp = require('gulp-sftp'),
     googlecdn = require('gulp-google-cdn');
 
 // Error options
@@ -370,6 +371,16 @@ gulp.task('postcss', ['concatCss'], function () {
       require('cssnano')()
     ]))
     .pipe(gulp.dest('public/app'));
+});
+
+gulp.task('sftp', function () {
+  return gulp.src('public/**/*')
+    .pipe(sftp({
+      host: '185.5.250.59',
+      user: 'frontend',
+      pass: 'chebur829',
+      remotePath: '/home/frontend/sites/prestapro.ru'
+    }));
 });
 
 gulp.task('main', function(cb) {

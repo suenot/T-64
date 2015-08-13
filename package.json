@@ -57,6 +57,7 @@
     "gulp-postcss": "^5.1.10",
     "gulp-rev-append": "^0.1.6",
     "gulp-run-sequence": "^0.3.2",
+    "gulp-sftp": "^0.1.4",
     "gulp-stylus": "^2.0.2",
     "gulp-svgmin": "^1.2.0",
     "gulp-uncss": "^1.0.3",
