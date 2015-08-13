@@ -25,8 +25,10 @@ var gulp = require('gulp'),
     imageminWebp = require('imagemin-webp'),
     googlecdn = require('gulp-google-cdn');
 
+// Error options
 var onError = function(err) {
-  gutil.beep();
+  gutil.beep(),
+  gutil.log(gutil.colors.green(err));
 };
 
 // Sourse files
@@ -130,6 +132,7 @@ gulp.task('stylus', function() {
         .pipe(browserSync.reload({stream: true}));
 });
 
+// Compile .webp of .jpeg
 gulp.task('webp', function() {
   return gulp.src('assets/img/**/*.jpg')
     .pipe(webp())
@@ -184,6 +187,7 @@ gulp.task('images', function() {
           .pipe(browserSync.reload({stream: true}));
 });
 
+// Minimize image size
 gulp.task('imagemin', ['main'], function () {
     return gulp.src('public/img/**/*.*')
         .pipe(imagemin({
@@ -233,6 +237,7 @@ gulp.task('imagemin', ['main'], function () {
         .pipe(gulp.dest('public/img'));
 });
 
+// Copy all images in _img
 gulp.task('_images', function() {
   return gulp.src('assets/_img/**')
           .pipe(newer('public/_img'))
@@ -272,6 +277,7 @@ gulp.task('docsFile', function() {
           .pipe(browserSync.reload({stream: true}));
 });
 
+// Delete in public all files before start gulp
 gulp.task('del', function () {
   return gulp.src(['public/*', '!public/CNAME', '!public/.git'])
     .pipe(vinylPaths(del));
@@ -303,18 +309,21 @@ gulp.task('uncss', ['main'], function() {
   .pipe(gulp.dest('public/app/'));
 });
 
+// Minifying html
 gulp.task('minify-html', ['uncss'], function() {
   return gulp.src('public/pages/main.html')
     .pipe(minifyHTML())
     .pipe(gulp.dest('public/pages/min'));
 });
 
+// Add all css in one
 gulp.task('concatCss', ['uncss'], function () {
   return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
     .pipe(concatCss('concat.css'))
     .pipe(gulp.dest('public/app/'));
 });
 
+// In Build task delete all files in public that are not needed
 gulp.task('delBuild', ['concatCss'], function () {
   return gulp.src(['public/app/*.css', '!public/app/concat.css'])
     .pipe(vinylPaths(del));
@@ -350,7 +359,7 @@ gulp.task('postcss', ['concatCss'], function () {
 });
 
 gulp.task('main', function(cb) {
-  runSequence('del', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'server', 'blocks', 'docs', 'docsFile'], cb);
+  runSequence('del', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'blocks', 'docs', 'docsFile'], 'server', cb);
 });
 gulp.task('default', ['main', 'watch']);
 gulp.task('build', ['main', 'imagemin', 'uncss', 'minify-html', 'concatCss', 'delBuild', 'postcss']);
