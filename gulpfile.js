@@ -291,7 +291,7 @@ gulp.task('watch', function() {
   gulp.watch('assets/img/**', ['images']);
   gulp.watch('assets/_img/**', ['_images']);
   gulp.watch('assets/font/*', ['font']);
-  gulp.watch('assets/app/_*.styl', ['stylus']);
+  gulp.watch('assets/app/*.styl', ['stylus']);
   gulp.watch('assets/pages/*',['blocks']);
   gulp.watch('assets/pages/index.jade', ['index']);
   gulp.watch('assets/pages/_*.jade', ['jade']);
