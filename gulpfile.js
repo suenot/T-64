@@ -80,12 +80,11 @@ src.styl.files.push('!'+src.styl.ignore);
 src.jade.files.push('!'+src.jade.ignore);
 src.image.files.push('!'+src.image.ignore);
 if (!isWin) {
-  console.log('not win')
     var filter = require('gulp-filter');
     var svgSprite = require('gulp-svg-sprites');
     var svg2png = require('gulp-svg2png');
     gulp.task('svg-symbols', function () {
-         return gulp.src('assets/img/svg/source/*.svg')
+         return gulp.src('assets/img/svg/*.svg')
             .pipe(svgSprite({
                 svg: {
                     sprite: 'sprite.svg'
@@ -95,15 +94,15 @@ if (!isWin) {
                 },
                 mode: 'symbols'
             }))
-            .pipe(gulp.dest('assets/img/svg/symbols'));
+            .pipe(gulp.dest('assets/img/svg-symbols'));
     });
     gulp.task('svg-sprite', function () {
-         return gulp.src('assets/img/svg/source/*.svg')
+         return gulp.src('assets/img/svg/*.svg')
         .pipe(svgSprite())
-        .pipe(gulp.dest('assets/img/svg/sprite'))
+        .pipe(gulp.dest('assets/img/svg-sprite'))
         .pipe(filter('**/*.svg'))
         .pipe(svg2png())
-        .pipe(gulp.dest('assets/img/svg/sprite'));
+        .pipe(gulp.dest('assets/img/svg-sprite'));
     });
     gulp.task('svg', ['svg-symbols', 'svg-sprite']);
 };
