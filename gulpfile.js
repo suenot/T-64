@@ -23,6 +23,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     imageminWebp = require('imagemin-webp'),
+    jsmin = require('gulp-jsmin'),
     googlecdn = require('gulp-google-cdn');
 
 // Error options
@@ -323,6 +324,13 @@ gulp.task('uncss', ['main'], function() {
   .pipe(gulp.dest('public/app/'));
 });
 
+// minify js using gulp
+gulp.task('minjs', ['main'], function () {
+    gulp.src('public/app/*.js')
+      .pipe(jsmin())
+      .pipe(gulp.dest('public/app'));
+});
+
 // Minifying html
 gulp.task('minify-html', ['uncss'], function() {
   return gulp.src('public/pages/main.html')
@@ -378,4 +386,4 @@ gulp.task('main', function(cb) {
 gulp.task('default', function(cb) {
   runSequence('main', 'watch', 'server', cb);
 });
-gulp.task('build', ['main', 'imageminWebp', 'imagemin', 'uncss', 'minify-html', 'concatCss', 'delBuild', 'postcss']);
+gulp.task('build', ['main', 'minjs', 'imageminWebp', 'imagemin', 'uncss', 'minify-html', 'concatCss', 'delBuild', 'postcss']);
