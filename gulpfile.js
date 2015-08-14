@@ -24,6 +24,7 @@ var gulp = require('gulp'),
     pngquant = require('imagemin-pngquant'),
     imageminWebp = require('imagemin-webp'),
     jsmin = require('gulp-jsmin'),
+    sftp = require('gulp-sftp'),
     googlecdn = require('gulp-google-cdn');
 
 // Error options
@@ -333,9 +334,9 @@ gulp.task('minjs', ['main'], function () {
 
 // Minifying html
 gulp.task('minify-html', ['uncss'], function() {
-  return gulp.src('public/pages/main.html')
+  return gulp.src('public/pages/*.html')
     .pipe(minifyHTML())
-    .pipe(gulp.dest('public/pages/min'));
+    .pipe(gulp.dest('public/pages'));
 });
 
 // Add all css in one
@@ -378,6 +379,16 @@ gulp.task('postcss', ['concatCss'], function () {
       require('cssnano')()
     ]))
     .pipe(gulp.dest('public/app'));
+});
+
+gulp.task('sftp', ['build'], function () {
+  return gulp.src('public/**/*')
+    .pipe(sftp({
+      host: '185.5.250.59',
+      user: 'frontend123',
+      pass: 'chebur829',
+      remotePath: '/home/frontend/sites/prestapro.ru'
+    }));
 });
 
 gulp.task('main', function(cb) {
