@@ -7,12 +7,19 @@
 	background-position: center top
 	background-repeat: repeat-x
 	background-attachment: fixed
-	// background-size: cover
 	height: 490px
 	position: relative
 	overflow: hidden
-	animation: animatedBackground 20s linear infinite
+	animation: animatedBackground 10s linear infinite
 	animation-direction: alternate
+	@media (max-width: $screen-lg-min)
+		animation: animatedBackground 20s linear infinite
+	@media (max-width: 900px)
+		background-image: url('/img/parallax/parallax.jpg')
+		background-attachment: scroll
+		animation: none
+		background-position: 0 0
+		background-repeat: none
 	@media (max-width: $screen-ipad-max)
 		height: 300px
 	&:before
