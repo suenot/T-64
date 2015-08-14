@@ -333,7 +333,7 @@ gulp.task('minify-html', ['uncss'], function() {
 
 // Add all css in one
 gulp.task('concatCss', ['uncss'], function () {
-  return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
+  return gulp.src(['http://fonts.googleapis.com/css?family=Open+Sans:600italic,400&subset=latin,cyrillic-ext,cyrillic,latin-ext', 'public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
     .pipe(concatCss('concat.css'))
     .pipe(gulp.dest('public/app/'));
 });
