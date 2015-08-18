@@ -385,7 +385,7 @@ gulp.task('sftp', ['build'], function () {
   return gulp.src('public/**/*')
     .pipe(sftp({
       host: '185.5.250.59',
-      user: 'frontend123',
+      user: 'frontend',
       pass: 'chebur829',
       remotePath: '/home/frontend/sites/prestapro.ru'
     }));
