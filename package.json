@@ -67,7 +67,6 @@
     "gulp-webp": "^2.3.0",
     "imagemin-pngquant": "^4.1.2",
     "imagemin-webp": "^3.1.0",
-    "ngrok": "^0.1.99",
     "postcss-colormin": "^1.2.4",
     "postcss-discard-comments": "^1.2.0",
     "postcss-discard-duplicates": "^1.1.3",
