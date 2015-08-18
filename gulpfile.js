@@ -144,7 +144,7 @@ gulp.task('stylus', function() {
 });
 
 // Compile .webp of .jpeg
-gulp.task('webp', function() {
+gulp.task('webp', ['images'], function() {
   return gulp.src('assets/img/**/*.jpg')
     .pipe(webp())
     .pipe(gulp.dest('public/img'));
@@ -180,18 +180,6 @@ gulp.task('index', function() {
             basedir: 'assets'
           }))
           .pipe(gulp.dest('public'))
-          .pipe(browserSync.reload({stream: true}));
-});
-
-// Blocks
-gulp.task('blocks', ['jade'], function() {
-  return gulp.src('./assets/pages/blocks.jade')
-          .pipe(plumber({errorHandler: onError}))
-          .pipe(jade({
-            pretty: true,
-            basedir: 'assets'
-          }))
-          .pipe(gulp.dest('./public/pages/'))
           .pipe(browserSync.reload({stream: true}));
 });
 
@@ -308,11 +296,26 @@ gulp.task('watch', function() {
   gulp.watch('assets/_img/**', ['_images']);
   gulp.watch('assets/font/*', ['font']);
   gulp.watch('assets/app/*.styl', ['stylus']);
-  gulp.watch('assets/pages/*',['blocks']);
   gulp.watch('assets/pages/index.jade', ['index']);
   gulp.watch('assets/pages/_*.jade', ['jade']);
   gulp.watch('assets/docs/**', ['jade']);
   gulp.watch('assets/docs/**', ['stylus']);
+  gulp.watch('assets/docs/**/*.*', ['docsFile']);
+});
+
+// build-server watch
+gulp.task('build-watch', function() {
+  gulp.watch('assets/blocks/**/*.styl',['postcss', 'delBuild']);
+  gulp.watch('assets/blocks/**/*.jade', ['minify-html', 'postcss', 'delBuild']);
+  gulp.watch('assets/app/vendor/**/*.*', ['app', 'minjs']);
+  gulp.watch('assets/img/**', ['images']);
+  gulp.watch('assets/_img/**', ['_images']);
+  gulp.watch('assets/font/*', ['font', 'postcss', 'delBuild']);
+  gulp.watch('assets/app/*.styl', ['postcss', 'delBuild']);
+  gulp.watch('assets/pages/index.jade', ['index']);
+  gulp.watch('assets/pages/_*.jade', ['minify-html', 'postcss', 'delBuild']);
+  gulp.watch('assets/docs/**', ['minify-html', 'postcss', 'delBuild']);
+  gulp.watch('assets/docs/**', ['postcss', 'delBuild']);
   gulp.watch('assets/docs/**/*.*', ['docsFile']);
 });
 
@@ -341,7 +344,7 @@ gulp.task('minify-html', ['uncss'], function() {
 
 // Add all css in one
 gulp.task('concatCss', ['uncss'], function () {
-  return gulp.src(['http://fonts.googleapis.com/css?family=Open+Sans:600italic,400&subset=latin,cyrillic-ext,cyrillic,latin-ext', 'public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
+  return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
     .pipe(concatCss('concat.css'))
     .pipe(gulp.dest('public/app/'));
 });
@@ -352,12 +355,12 @@ gulp.task('delBuild', ['concatCss'], function () {
     .pipe(vinylPaths(del));
 });
 
-
 gulp.task('postcss', ['concatCss'], function () {
-    return gulp.src('public/app/concat.css')
-    .pipe(postcss([
-      require('cssnext')(),
-      require('css-mqpacker')(),
+    var options = [
+      // require('cssnano')(),
+      // require('cssnext')(),
+      // require('css-mqpacker')(),
+      // require('postcss-merge-rules')(),
       require('postcss-zindex')(),
       require('postcss-discard-duplicates')(),
       require('postcss-discard-comments')({removeAll: true}),
@@ -366,7 +369,6 @@ gulp.task('postcss', ['concatCss'], function () {
       require('postcss-pseudoelements')(),
       require('postcss-unique-selectors')(),
       require('postcss-colormin')(),
-      require('postcss-merge-rules')(),
       require('postcss-discard-unused')(),
       require('postcss-reduce-idents')(),
       require('postcss-minify-font-weight')(),
@@ -374,10 +376,10 @@ gulp.task('postcss', ['concatCss'], function () {
       require('postcss-minify-trbl')(),
       require('postcss-font-family')(),
       require('postcss-single-charset')()
-    ]))
-    .pipe(postcss([
-      require('cssnano')()
-    ]))
+    ];
+
+    return gulp.src('public/app/concat.css')
+    .pipe(postcss(options))
     .pipe(gulp.dest('public/app'));
 });
 
@@ -392,9 +394,17 @@ gulp.task('sftp', ['build'], function () {
 });
 
 gulp.task('main', function(cb) {
-  runSequence('del', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'blocks', 'docs', 'docsFile'], cb);
+  runSequence('del', ['jade', 'stylus', 'app', 'images', 'font', '_images', 'webp', 'index', 'docs', 'docsFile'], cb);
 });
+
 gulp.task('default', function(cb) {
   runSequence('main', 'watch', 'server', cb);
 });
-gulp.task('build', ['main', 'minjs', 'imageminWebp', 'imagemin', 'uncss', 'minify-html', 'concatCss', 'delBuild', 'postcss']);
+
+gulp.task('build', function(cb) {
+  runSequence('main', ['minjs', 'imageminWebp', 'imagemin', 'uncss', 'minify-html', 'concatCss', 'delBuild', 'postcss'], cb);
+});
+
+gulp.task('build-server', function(cb) {
+  runSequence('build', ['build-watch', 'server'], cb);
+});
