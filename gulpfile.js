@@ -90,33 +90,33 @@ src.app = {
 src.styl.files.push('!'+src.styl.ignore);
 src.jade.files.push('!'+src.jade.ignore);
 src.image.files.push('!'+src.image.ignore);
-if (!isWin) {
-    var filter = require('gulp-filter');
-    var svgSprite = require('gulp-svg-sprites');
-    var svg2png = require('gulp-svg2png');
-    gulp.task('svg-symbols', function () {
-         return gulp.src('assets/img/svg/*.svg')
-            .pipe(svgSprite({
-                svg: {
-                    sprite: 'sprite.svg'
-                },
-                preview: {
-                    sprite: 'index.html'
-                },
-                mode: 'symbols'
-            }))
-            .pipe(gulp.dest('assets/img/svg-symbols'));
-    });
-    gulp.task('svg-sprite', function () {
-         return gulp.src('assets/img/svg/*.svg')
-        .pipe(svgSprite())
-        .pipe(gulp.dest('assets/img/svg-sprite'))
-        .pipe(filter('**/*.svg'))
-        .pipe(svg2png())
-        .pipe(gulp.dest('assets/img/svg-sprite'));
-    });
-    gulp.task('svg', ['svg-symbols', 'svg-sprite']);
-};
+// if (!isWin) {
+//     var filter = require('gulp-filter');
+//     var svgSprite = require('gulp-svg-sprites');
+//     var svg2png = require('gulp-svg2png');
+//     gulp.task('svg-symbols', function () {
+//          return gulp.src('assets/img/svg/*.svg')
+//             .pipe(svgSprite({
+//                 svg: {
+//                     sprite: 'sprite.svg'
+//                 },
+//                 preview: {
+//                     sprite: 'index.html'
+//                 },
+//                 mode: 'symbols'
+//             }))
+//             .pipe(gulp.dest('assets/img/svg-symbols'));
+//     });
+//     gulp.task('svg-sprite', function () {
+//          return gulp.src('assets/img/svg/*.svg')
+//         .pipe(svgSprite())
+//         .pipe(gulp.dest('assets/img/svg-sprite'))
+//         .pipe(filter('**/*.svg'))
+//         .pipe(svg2png())
+//         .pipe(gulp.dest('assets/img/svg-sprite'));
+//     });
+//     gulp.task('svg', ['svg-symbols', 'svg-sprite']);
+// };
 
 // All browserSync
 gulp.task('server', function() {
@@ -341,7 +341,7 @@ gulp.task('minify-html', ['uncss'], function() {
 
 // Add all css in one
 gulp.task('concatCss', ['uncss'], function () {
-  return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
+  return gulp.src(['http://fonts.googleapis.com/css?family=Open+Sans:600italic,400&subset=latin,cyrillic-ext,cyrillic,latin-ext', 'public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
     .pipe(concatCss('concat.css'))
     .pipe(gulp.dest('public/app/'));
 });
