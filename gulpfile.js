@@ -192,12 +192,12 @@ gulp.task('images', function() {
 });
 
 // Minimize image size
-gulp.task('imagemin', ['main'], function () {
-    return gulp.src('public/img/**/*.*')
+gulp.task('imagemin', function () {
+    return gulp.src('public/img/**/*.{png,jpg,svg}')
         .pipe(imagemin({
             use: [pngquant()],
             progressive: true,
-            optimizationLevel: 1,
+            optimizationLevel: 3,
             multipass: true,
             svgoPlugins: [
                // { cleanupAttrs: false },
@@ -305,22 +305,26 @@ gulp.task('watch', function() {
 
 // build-server watch
 gulp.task('build-watch', function() {
-  gulp.watch('assets/blocks/**/*.styl',['postcss', 'delBuild']);
-  gulp.watch('assets/blocks/**/*.jade', ['minify-html', 'postcss', 'delBuild']);
+  gulp.watch('assets/blocks/**/*.styl',['delForWatch', 'postcss', 'app', 'delBuild']);
+  gulp.watch('assets/blocks/**/*.jade', ['minify-html', 'delForWatch', 'postcss', 'app', 'delBuild']);
   gulp.watch('assets/app/vendor/**/*.*', ['app', 'minjs']);
   gulp.watch('assets/img/**', ['images']);
   gulp.watch('assets/_img/**', ['_images']);
-  gulp.watch('assets/font/*', ['font', 'postcss', 'delBuild']);
-  gulp.watch('assets/app/*.styl', ['postcss', 'delBuild']);
-  gulp.watch('assets/pages/index.jade', ['index']);
-  gulp.watch('assets/pages/_*.jade', ['minify-html', 'postcss', 'delBuild']);
-  gulp.watch('assets/docs/**', ['minify-html', 'postcss', 'delBuild']);
-  gulp.watch('assets/docs/**', ['postcss', 'delBuild']);
+  gulp.watch('assets/font/*', ['delForWatch', 'font', 'postcss', 'delBuild']);
+  gulp.watch('assets/app/*.styl', ['delForWatch', 'postcss', 'delBuild']);
+  gulp.watch('assets/pages/index.jade', ['index', 'delForWatch', 'postcss', 'app', 'delBuild']);
+  gulp.watch('assets/pages/_*.jade', ['minify-html', 'delForWatch', 'postcss', 'app', 'delBuild']);
+  gulp.watch('assets/docs/**', ['minify-html',' delForWatch', 'postcss', 'app', 'delBuild']);
   gulp.watch('assets/docs/**/*.*', ['docsFile']);
 });
 
+gulp.task('delForWatch', function () {
+  return gulp.src(['public/app/concat.css'])
+    .pipe(vinylPaths(del));
+});
+
 // BUILD
-gulp.task('uncss', ['main'], function() {
+gulp.task('uncss', ['stylus'], function() {
   return gulp.src(['public/app/*.css', '!public/app/app.css'])
   .pipe(uncss({
     html: ['public/pages/main.html']
@@ -328,15 +332,20 @@ gulp.task('uncss', ['main'], function() {
   .pipe(gulp.dest('public/app/'));
 });
 
+gulp.task('delForJade', function () {
+  return gulp.src(['public/pages/main.html'])
+    .pipe(vinylPaths(del));
+});
+
 // minify js using gulp
-gulp.task('minjs', ['main'], function () {
+gulp.task('minjs', function () {
     gulp.src('public/app/*.js')
       .pipe(jsmin())
       .pipe(gulp.dest('public/app'));
 });
 
 // Minifying html
-gulp.task('minify-html', ['uncss'], function() {
+gulp.task('minify-html', ['jade'], function() {
   return gulp.src('public/pages/*.html')
     .pipe(minifyHTML())
     .pipe(gulp.dest('public/pages'));
@@ -406,5 +415,5 @@ gulp.task('build', function(cb) {
 });
 
 gulp.task('build-server', function(cb) {
-  runSequence('build', ['build-watch', 'server'], cb);
+  runSequence('build', 'build-watch', 'server', cb);
 });
