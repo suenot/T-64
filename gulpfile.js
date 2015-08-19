@@ -332,11 +332,6 @@ gulp.task('uncss', ['stylus'], function() {
   .pipe(gulp.dest('public/app/'));
 });
 
-gulp.task('delForJade', function () {
-  return gulp.src(['public/pages/main.html'])
-    .pipe(vinylPaths(del));
-});
-
 // minify js using gulp
 gulp.task('minjs', function () {
     gulp.src('public/app/*.js')
