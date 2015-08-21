@@ -1,19 +1,20 @@
 @keyframes animatedBackground {
-	from { background-position: center top; }
-	to { background-position: 100% 0; }
+	from { background-position: 0 0 }
+	to {background-position: -150% 0 }
 }
+
 .parallax
-	background-image: url('/img/parallax/parallax.jpg')
+	background-image: url('/img/parallax/parallax.png')
 	background-position: center top
-	background-repeat: repeat-x
+	background-repeat: repeat
 	background-attachment: fixed
 	height: 490px
+	width: 100%
 	position: relative
 	overflow: hidden
-	animation: animatedBackground 10s linear infinite
-	animation-direction: alternate
+	animation: animatedBackground 15s linear 0s infinite
 	@media (max-width: $screen-lg-min)
-		animation: animatedBackground 20s linear infinite
+		animation: animatedBackground 20s infinite linear
 	@media (max-width: 900px)
 		background-attachment: scroll
 		animation: none
