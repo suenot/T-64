@@ -1,6 +1,6 @@
 @keyframes animatedBackground {
 	from { background-position: 0 0 }
-	to {background-position: -150% 0 }
+	to {background-position: 1920px 0 }
 }
 
 .parallax
@@ -14,12 +14,12 @@
 	width: 100%
 	position: relative
 	overflow: hidden
-	animation: animatedBackground 15s linear 0s infinite
+	animation: animatedBackground 35s linear 0s infinite
 	@media (max-width: $screen-lg-min)
-		animation: animatedBackground 20s infinite linear
+		animation: animatedBackground 45s infinite linear
 	@media (max-width: 900px)
 		background-attachment: scroll
-		animation: none
+		animation: animatedBackground 45s infinite linear
 		background-position: 0 0
 		background-repeat: none
 	@media (max-width: $screen-ipad-max)
