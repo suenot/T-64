@@ -11,9 +11,11 @@
 
 .parallax
 	background-position: left top
-	background-repeat: repeat-x
+	background-repeat: repeat
 	background-attachment: fixed
-	height: 490px
+	background-size: 2500px
+	min-height: calc(100vh - 125px)
+	// height: 490px
 	width: 100%
 	position: relative
 	overflow: hidden
@@ -22,7 +24,7 @@
 		animation: animatedBackground 60s infinite linear
 	@media (max-width: 900px)
 		background-attachment: scroll
-		animation: none
+		animation: animatedBackground 70s infinite linear
 		background-position: 0 0
 		background-repeat: none
 	@media (max-width: $screen-ipad-max)
