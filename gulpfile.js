@@ -393,7 +393,7 @@ gulp.task('sftp', ['build'], function () {
       host: '185.5.250.59',
       user: 'frontend',
       pass: 'chebur829',
-      remotePath: '/home/frontend/sites/prestapro.ru'
+      remotePath: '/home/frontend/sites/prestapro.ru-test'
     }));
 });
 
