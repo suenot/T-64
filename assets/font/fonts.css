@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'SegoeScript';
-  src: url('SegoeScript/SegoeScript.eot?#iefix') format('embedded-opentype'),  url('SegoeScript/SegoeScript.woff') format('woff'), url('SegoeScript/SegoeScript.ttf')  format('truetype'), url('SegoeScript/SegoeScript.svg#SegoeScript') format('svg');
+  src: url('/font/SegoeScript/SegoeScript.eot?#iefix') format('embedded-opentype'),  url('/font/SegoeScript/SegoeScript.woff') format('woff'), url('/font/SegoeScript/SegoeScript.ttf')  format('truetype'), url('/font/SegoeScript/SegoeScript.svg#SegoeScript') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'IdealistSans';
-  src: url('IdealistSans/IdealistSans.eot?#iefix') format('embedded-opentype'),  url('IdealistSans/IdealistSans.woff') format('woff'), url('IdealistSans/IdealistSans.ttf')  format('truetype'), url('IdealistSans/IdealistSans.svg#IdealistSans') format('svg');
+  src: url('/font/IdealistSans/IdealistSans.eot?#iefix') format('embedded-opentype'),  url('/font/IdealistSans/IdealistSans.woff') format('woff'), url('/font/IdealistSans/IdealistSans.ttf')  format('truetype'), url('/font/IdealistSans/IdealistSans.svg#IdealistSans') format('svg');
   font-weight: normal;
   font-style: normal;
 }

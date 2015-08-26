@@ -348,8 +348,8 @@ gulp.task('minify-html', ['jade'], function() {
 
 // Add all css in one
 gulp.task('concatCss', ['uncss'], function () {
-  return gulp.src(['public/app/bootstrap.min.css', 'public/app/*.css', 'public/font/*.css'])
-    .pipe(concatCss('concat.css'))
+  return gulp.src(['public/font/*.css', 'public/app/bootstrap.min.css', 'public/app/*.css', ])
+    .pipe(concatCss('concat.css', {'rebaseUrls': false}))
     .pipe(gulp.dest('public/app/'));
 });
 
