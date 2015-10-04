@@ -33,7 +33,6 @@
     "gulp-util": "^3.0.6",
     "postcss": "^5.0.8",
     "require-dir": "^0.3.0",
-    "rmdir": "^1.1.0",
     "run-sequence": "^1.1.2",
     "vinyl-paths": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
