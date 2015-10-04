@@ -1,17 +1,14 @@
 doctype html
 html
 	head
-		meta(http-equiv="content-type" content="text/html; charset=utf-8")
-		title Линки страниц
-		link(rel="stylesheet" type="text/css" href="app/bootstrap.min.css")
-		style(type="text/css").
-			b {padding-right: 20px}
-			b.padd {padding-right: 11px}
-			hr {margin-top: 10px; margin-bottom: 10px}
+		title Main
+		include /pages/_head.jade
 	body
-		.container
-			h2(style="text-align: center") prestapro.ru: Pages
-			ul(style="margin: 0 auto 50px; width: 600px")
-				li: a(href="docs/docs.html") Структура блоков проекта
-				hr
-				li: a(href="pages/main.html") <b> Main
+		main
+			include /blocks/header/header.jade
+			include /blocks/parallax/parallax.jade
+			include /blocks/search/search.jade
+			include /blocks/cards-list/cards-list.jade
+		include /blocks/subscribe/subscribe
+		include /blocks/footer/footer
+		include /pages/_foot.jade

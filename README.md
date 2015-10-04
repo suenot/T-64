@@ -3,7 +3,7 @@
 npm instal --force
 либо вручную для разработки
 ```
-gulp install bower browser-sync del gulp gulp-autoprefixer gulp-clean gulp-concat gulp-concat-css gulp-copy gulp-filesize gulp-if gulp-inject gulp-jade gulp-livereload gulp-load-plugins gulp-minify gulp-newer gulp-notify gulp-order gulp-plumber gulp-rev-append gulp-run-sequence gulp-streamify gulp-stylus gulp-uglify gulp-util require-dir run-sequence vinyl-paths vinyl-source-stream
+npm install bower browser-sync del gulp autoprefixer gulp-clean gulp-concat gulp-minify-css gulp-concat-css gulp-copy gulp-filesize gulp-if gulp-inject gulp-jade gulp-livereload gulp-load-plugins gulp-minify gulp-newer gulp-notify gulp-order gulp-plumber gulp-rev-append gulp-run-sequence gulp-streamify gulp-stylus gulp-uglify gulp-util require-dir run-sequence vinyl-paths vinyl-source-stream gulp-rename gulp-sass --force
 ```
 
 ## Bower
