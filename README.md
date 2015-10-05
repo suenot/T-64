@@ -1,12 +1,29 @@
-## Install
-Пакеты ставим через:
-npm instal --force
-либо вручную для разработки
+# Сборка
+## Development
+### Установка
+Пакеты для разработки ставим в винде вручную:
 ```
-npm install bower browser-sync del gulp autoprefixer gulp-clean gulp-concat gulp-minify-css gulp-concat-css gulp-copy gulp-filesize gulp-if gulp-inject gulp-jade gulp-livereload gulp-load-plugins gulp-minify gulp-newer gulp-notify gulp-order gulp-plumber gulp-rev-append gulp-run-sequence gulp-streamify gulp-stylus gulp-uglify gulp-util require-dir run-sequence vinyl-paths vinyl-source-stream gulp-rename gulp-sass --force
+npm install bower browser-sync del gulp gulp-inject gulp-jade gulp-load-plugins gulp-newer gulp-plumber gulp-postcss gulp-rename run-sequence gulp-sass gulp-stylus gulp-util postcss autoprefixer require-dir gulp-webp
+bower install
 ```
+в нормальных ос:
+```
+npm install --development
+```
+при необходимости можно добавить флаг ```--force``` для npm (скачивает пакеты заново, а не использует из кэша)
+### Запуск
+```gulp```
 
-## Bower
+## Production
+### Установка
+```
+npm install --force
+bower install
+```
+### Запуск
+```gulp build```
+
+# Bower
 npm install bower -g установка bower
 bower install установка компонентов bower
 bower install <package-name>#<version> установка одного компонента
