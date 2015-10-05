@@ -54,7 +54,6 @@ gulp.task('build', function(cb) {
 			'doc'
 		],
 		[
-			'imagemin',
 			'injectProd',
 		],
 		'minHtml',
@@ -68,6 +67,34 @@ gulp.task('danger', function(cb) {
 	require('require-dir')('./gulp/build', {recurse: true});
 	require('require-dir')('./gulp/danger', {recurse: true});
 	runSequence(
-		'build'
+		'del',
+		[
+			'stylus',
+			'app',
+			'jade',
+			'index'
+		],
+		[
+			'pagesList',
+			'font',
+			'_images',
+			'images',
+			'webp'
+		],
+		[
+			'concatCss',
+			'minjs'
+		],
+		[
+			'doc'
+		],
+		[
+			'imagemin',
+			'imageminWebp',
+			'injectProd',
+		],
+		'minHtml',
+		'server',
+		cb
 	);
 });
