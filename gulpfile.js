@@ -2,7 +2,6 @@
 
 var runSequence = require('run-sequence');
 var gulp = require('gulp');
-var gulpif = require('gulp-if');
 var gutil = require('gulp-util');
 
 gulp.task('default', function(cb) {
@@ -13,17 +12,17 @@ gulp.task('default', function(cb) {
 			'stylus',
 			'app',
 			'jade',
-			'index'
+			'index',
+			'font',
+			'_images',
+			'images'
 		],
 		[
 			'pagesList',
-			'font',
-			'_images',
-			'images',
-			'webp'
+			'webp',
+			'injectDev',
+			'watch'
 		],
-		'injectDev',
-		'watch',
 		'server',
 		cb
 	);

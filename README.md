@@ -3,7 +3,7 @@
 ### Установка
 Пакеты для разработки ставим в винде вручную:
 ```
-npm install bower browser-sync del gulp gulp-inject gulp-jade gulp-load-plugins gulp-newer gulp-plumber gulp-postcss gulp-rename run-sequence gulp-sass gulp-stylus gulp-util postcss autoprefixer require-dir gulp-webp
+npm install bower browser-sync del gulp gulp-inject gulp-jade gulp-load-plugins gulp-newer gulp-plumber gulp-postcss gulp-rename run-sequence gulp-sass gulp-stylus gulp-util postcss autoprefixer require-dir gulp-webp --force
 bower install
 ```
 в нормальных ос:

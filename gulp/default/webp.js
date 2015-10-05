@@ -1,6 +1,5 @@
 'use strict';
 var gulp = require('gulp');
-var imageminWebp = require('imagemin-webp');
 var webp = require('gulp-webp');
 
 gulp.task('webp', ['images'], function() {

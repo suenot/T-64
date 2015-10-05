@@ -17,7 +17,7 @@ src.styl = {
 	'files': [
 		'assets/**/**/*.styl'
 	],
-	'dest': 'public/app',
+	'dest': 'public',
 	'name': 'all.min.css',
 	'ignore': 'assets/**/_*.styl'
 };
