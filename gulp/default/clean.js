@@ -1,7 +1,6 @@
 // Delete in public all files before start gulp
 var gulp = require('gulp');
 var del = require('del');
-var vinylPaths = require('vinyl-paths');
 
 // Deleted folder public
 gulp.task('del', function() {

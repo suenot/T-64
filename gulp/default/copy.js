@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -27,7 +27,6 @@ src.font = {
 	],
 	'dest': 'public/font',
 };
-
 
 // Copy All Files At (images)
 gulp.task('images', function() {
@@ -59,15 +58,4 @@ gulp.task('font', function() {
 	.pipe(newer('public/font'))
 	.pipe(gulp.dest(src.font.dest))
 	.pipe(browserSync.reload({stream: true}));
-});
-
-// Build copy images
-// TODO нужно ли это? опять build папка
-gulp.task('copy-img', function() {
-	return gulp.src('assets/_img/**')
-	.pipe(gulp.dest('public/_img'))
-});
-gulp.task('copy-font', function() {
-	return gulp.src('assets/font/**')
-	.pipe(gulp.dest('public/font'))
 });

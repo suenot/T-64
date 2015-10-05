@@ -16,6 +16,7 @@ gulp.task('default', function(cb) {
 			'index'
 		],
 		[
+			'pagesList',
 			'font',
 			'_images',
 			'images',
@@ -40,6 +41,7 @@ gulp.task('build', function(cb) {
 			'index'
 		],
 		[
+			'pagesList',
 			'font',
 			'_images',
 			'images',
@@ -50,44 +52,23 @@ gulp.task('build', function(cb) {
 			'minjs'
 		],
 		[
-			'font',
-			'_images',
-			'index',
 			'doc'
 		],
 		[
 			'imagemin',
 			'injectProd',
-			'copy-img',
-			'copy-font',
-			'imageminWebpBuild'
 		],
 		'minHtml',
-		"server",
+		'server',
 		cb
 	);
 });
 
-// TODO experimental tasks
-// gulp.task('exp', function(cb) {
-// 	require('require-dir')('./gulp/default', {recurse: true});
-// 	require('require-dir')('./gulp/build', {recurse: true});
-// 	require('require-dir')('./gulp/exp', {recurse: true});
-// 	runSequence(
-// 		'delbuld',
-// 		[
-// 			'concatCss',
-// 			'minjs'
-// 		],
-// 		[
-// 			'imagemin',
-// 			'copy-img',
-// 			'copy-font',
-// 			'jadeBuild',
-// 			'imageminWebpBuild'
-// 		],
-// 		'minify-html',
-// 		'delmin',
-// 		"serverbuild", cb
-// 	);
-// });
+gulp.task('danger', function(cb) {
+	require('require-dir')('./gulp/default', {recurse: true});
+	require('require-dir')('./gulp/build', {recurse: true});
+	require('require-dir')('./gulp/danger', {recurse: true});
+	runSequence(
+		'build'
+	);
+});

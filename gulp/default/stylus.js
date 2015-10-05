@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var gulp = require('gulp');
 var newer = require('gulp-newer');
 var plumber = require('gulp-plumber');
