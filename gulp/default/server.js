@@ -16,9 +16,9 @@ if(gutil.env.live === true){
 gulp.task('server', function() {
 	browserSync({
 		server: {
-			baseDir: "public",
+			baseDir: 'public',
 			routes: {
-				"/bower_components": "bower_components"
+				'/bower_components': 'bower_components'
 			}
 		},
 		notify: false,
