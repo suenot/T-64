@@ -1,7 +1,7 @@
 node_modules
 tmp
 public
-build
+/build
 bower_components
 
 # Packages #
