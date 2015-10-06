@@ -6,11 +6,11 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var config = require('../utils/config');
 var src = {};
-var streamify  = require('gulp-streamify');
-var sourcemaps = require('gulp-sourcemaps');
-var derequire = require('gulp-derequire');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
+// var streamify  = require('gulp-streamify');
+// var sourcemaps = require('gulp-sourcemaps');
+// var derequire = require('gulp-derequire');
+// var source = require('vinyl-source-stream');
+// var buffer = require('vinyl-buffer');
 var eachAsync = require('each-async');
 
 gulp.task('injectDev', ['jade'], function(done) {
@@ -26,6 +26,6 @@ gulp.task('injectDev', ['jade'], function(done) {
 		}))
 		.pipe(gulp.dest('public'))
 		.pipe(browserSync.reload({stream: true}))
-		.on('finish', next);
+		.on('end', next);
 	}, done());
 });
