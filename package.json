@@ -17,7 +17,6 @@
     "gulp-sass": "^2.0.4",
     "gulp-stylus": "^2.0.2",
     "gulp-util": "^3.0.6",
-    "postcss": "^5.0.8",
     "autoprefixer": "^6.0.3",
     "require-dir": "^0.3.0",
     "gulp-webp": "^2.3.0"
