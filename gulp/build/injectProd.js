@@ -16,7 +16,8 @@ gulp.task('injectProd', ['jade'], function() {
 		'./public/app/main.min.css'
 	], {read: false});
 	return gulp.src([
-		'public/pages/*.html'
+		'public/*.html',
+		'!public/i.html'
 	])
 	.pipe(plumber({errorHandler: onError}))
 	.pipe(inject(buildSource, {
@@ -31,6 +32,6 @@ gulp.task('injectProd', ['jade'], function() {
 			return inject.transform.apply(inject.transform, arguments);
 		}
 	}))
-	.pipe(gulp.dest('public/pages'))
+	.pipe(gulp.dest('public'))
 	.pipe(browserSync.reload({stream: true}));
 });

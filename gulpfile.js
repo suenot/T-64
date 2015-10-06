@@ -12,7 +12,6 @@ gulp.task('default', function(cb) {
 			'stylus',
 			'app',
 			'jade',
-			'index',
 			'font',
 			'_images',
 			'images'
@@ -36,8 +35,7 @@ gulp.task('build', function(cb) {
 		[
 			'stylus',
 			'app',
-			'jade',
-			'index'
+			'jade'
 		],
 		[
 			'pagesList',

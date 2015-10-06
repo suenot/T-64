@@ -64,7 +64,7 @@ gulp.task('concatLibs', function () {
 		gulp.src(src.libsCss.files)
 	)
 	.pipe(uncss({
-		html: ['public/pages/index.html']
+		html: ['public/index.html']
 	}))
 	.pipe(concats('libs.min.css'))
 	.pipe(notify({

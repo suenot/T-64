@@ -23,7 +23,7 @@ src.app = {
 
 src.font = {
 	'files': [
-		'assets/font/**'
+		'assets/font/**/*'
 	],
 	'dest': 'public/font',
 };
@@ -55,7 +55,6 @@ gulp.task('app', function() {
 // Copy Web Fonts To Dist
 gulp.task('font', function() {
 	return gulp.src(src.font.files)
-	.pipe(newer('public/font'))
 	.pipe(gulp.dest(src.font.dest))
 	.pipe(browserSync.reload({stream: true}));
 });

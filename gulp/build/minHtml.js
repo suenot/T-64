@@ -6,7 +6,7 @@ var size = require('gulp-filesize');
 
 // Minifying html
 gulp.task('minHtml', function() {
-	return gulp.src('build/pages/*.html')
+	return gulp.src('build/*.html')
 	.pipe(minifyHTML())
 	.pipe(size())
 	.pipe(notify({
@@ -15,5 +15,5 @@ gulp.task('minHtml', function() {
 		'sound': 'Beep',
 		'onLast': true
 	}))
-	.pipe(gulp.dest('public/pages'));
+	.pipe(gulp.dest('public'));
 });

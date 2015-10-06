@@ -20,6 +20,6 @@ gulp.task('jade', function() {
 		pretty: true,
 		basedir: 'assets'
 	}))
-	.pipe(gulp.dest('public/pages'))
+	.pipe(gulp.dest('public'))
 	.pipe(browserSync.reload({stream: true}));
 });

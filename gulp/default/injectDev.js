@@ -26,7 +26,8 @@ gulp.task('injectDev', ['jade'], function() {
 	);
 	return gulp.src(
 		[
-			'public/pages/*.html',
+			'public/*.html',
+			'!public/i.html'
 		]
 	)
 	.pipe(plumber({errorHandler: onError}))
@@ -45,6 +46,6 @@ gulp.task('injectDev', ['jade'], function() {
 			return inject.transform.apply(inject.transform, arguments);
 		}
 	}))
-	.pipe(gulp.dest('public/pages'))
+	.pipe(gulp.dest('public'))
 	.pipe(browserSync.reload({stream: true}));
 });
