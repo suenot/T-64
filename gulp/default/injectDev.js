@@ -6,26 +6,20 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var config = require('../utils/config');
 var src = {};
-// var streamify  = require('gulp-streamify');
-// var sourcemaps = require('gulp-sourcemaps');
-// var derequire = require('gulp-derequire');
-// var source = require('vinyl-source-stream');
-// var buffer = require('vinyl-buffer');
-var eachAsync = require('each-async');
+var es = require('event-stream');
+var foreach = require('gulp-foreach');
+var each = require('async-each-series');
 
 gulp.task('injectDev', ['jade'], function(done) {
-	eachAsync(config.bundles, function(item, i, next) {
-		gulp.src(
-			item.pages
-		)
+	each(config.bundles, function(el, next) {
+		gulp.src(el.pages)
 		.pipe(plumber({errorHandler: onError}))
-		.pipe(inject(gulp.src(item.css.concat(item.js), {read: false}), {
-			name: item.name,
-			// removeTags: true,
+		.pipe(inject(gulp.src(el.css.concat(el.js), {read: false}), {
+			name: el.name,
 			ignorePath: 'public'
 		}))
 		.pipe(gulp.dest('public'))
 		.pipe(browserSync.reload({stream: true}))
-		.on('end', next);
+		.on('finish', next);
 	}, done());
 });
