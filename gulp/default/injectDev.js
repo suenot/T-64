@@ -6,8 +6,6 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var config = require('../utils/config');
 var src = {};
-var es = require('event-stream');
-var foreach = require('gulp-foreach');
 var each = require('async-each-series');
 
 gulp.task('injectDev', ['jade'], function(done) {
