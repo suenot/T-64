@@ -44,13 +44,9 @@ gulp.task('build', function(cb) {
 			'font',
 			'_images',
 			'images',
-			'webp'
-		],
-		[
+			'webp',
 			'minCss',
-			'minJs'
-		],
-		[
+			'minJs',
 			'doc'
 		],
 		[

@@ -19,7 +19,8 @@ module.exports = {
 				'public/app/libs.min.css'
 			],
 			buildTo: 'public/app',
-			uncss: true
+			uncss: true,
+			async: true
 		},
 		{
 			name: 'app',
@@ -30,7 +31,8 @@ module.exports = {
 				'public/blocks/**/*.css'
 			],
 			js: [
-				'public/app/**/*.js',
+				'public/app/modernizr.js',
+				'public/app/svg.js',
 				'public/blocks/**/*.js'
 			],
 			pages: [
@@ -42,7 +44,8 @@ module.exports = {
 				'public/app/app.min.css'
 			],
 			buildTo: 'public/app',
-			uncss: false
+			uncss: false,
+			async: false
 		}
 	]
 }

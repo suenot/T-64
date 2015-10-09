@@ -8,7 +8,7 @@ var src = {};
 var config = require('../utils/config');
 var each = require('async-each-series');
 
-gulp.task('injectProd', ['jade', 'minCss'], function(done) {
+gulp.task('injectProd', function(done) {
 	each(config.bundles, function(bundle, next) {
 		gulp.src(bundle.pages)
 		.pipe(plumber({errorHandler: onError}))
