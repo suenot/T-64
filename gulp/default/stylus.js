@@ -10,7 +10,7 @@ var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var src = {};
 var browsers ={};
-
+var changed = require('gulp-changed');
 
 // Source files
 src.styl = {
@@ -42,11 +42,12 @@ var autoprefixerOptions = {
 // Complite stylus and automatically prefix css
 gulp.task('stylus', function() {
 	return gulp.src(src.styl.files)
+	.pipe(changed(src.styl.dest, {extension: '.css'}))
 	.pipe(plumber({errorHandler: onError}))
 	.pipe(stylus())
 	.pipe(postcss([
 		autoprefixer(autoprefixerOptions)
 	]))
-	.pipe(gulp.dest('public'))
-	.pipe(browserSync.reload({stream: true}));
+	.pipe(gulp.dest(src.styl.dest))
+	.pipe(browserSync.reload({stream: true}))
 });
