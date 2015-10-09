@@ -14,15 +14,17 @@ gulp.task('default', function(cb) {
 			'jade',
 			'font',
 			'_images',
+			'pagesList',
 			'images'
 		],
 		[
-			'pagesList',
 			'webp',
-			'injectDev',
-			'watch'
+			'injectDev'
 		],
-		'server',
+		[
+			'watch',
+			'server'
+		],
 		cb
 	);
 });

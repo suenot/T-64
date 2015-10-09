@@ -2,13 +2,14 @@
 var gulp = require('gulp');
 
 // Watch everything
-gulp.task('watch', ['setWatch', 'jade'], function() {
-	gulp.watch('assets/blocks/**/**/*.jade', ['injectDev']);
-	gulp.watch('assets/pages/**/**/*.jade', ['injectDev']);
-	gulp.watch('assets/docs/**', ['jade']);
-	gulp.watch('assets/blocks/**/*.styl',['stylus']);
-	gulp.watch('assets/app/*.styl', ['stylus']);
-	gulp.watch('assets/docs/**', ['stylus']);
+gulp.task('watch', ['setWatch'], function() {
+	gulp.watch('assets/**/**/**/*.jade', ['jadeInject']);
+	gulp.watch('assets/**/**/**/*.styl', ['stylusInject']);
+	gulp.watch([
+		'bower_components/**/**/**/**/**/**/*.js',
+		'assets/**/**/**/*.js',
+		'gulp/utils/config.js'
+	], ['jsInject']);
 	gulp.watch('assets/app/**/**/*', ['app']);
 	gulp.watch('assets/img/**', ['images']);
 	gulp.watch('assets/_img/**', ['_images']);

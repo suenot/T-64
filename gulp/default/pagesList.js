@@ -22,7 +22,7 @@ gulp.task('pagesList', ['jade'], function() {
 		name: 'pages',
 		transform: function(filepath) {
 			var filepath = filepath.substring(7);
-			var filename = filepath.substring(7, filepath.length - 5).replace(filepath[7], filepath[7].toUpperCase())
+			var filename = filepath.substring(7, filepath.length - 5).replace(filepath[7], filepath[7].toUpperCase());
 			return '<li><a href="' + filepath + '">' + filepath + '</a></li>';
 		}
 	}))
