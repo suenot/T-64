@@ -11,7 +11,7 @@ var src = {};
 // Sourse files
 src.fileBlocks = {
 	'files': [
-		'assets/blocks/*.*', 
+		'assets/blocks/*.*',
 		'assets/blocks/**/*.*'
 	],
 	'dest': 'public/blocks'

@@ -16,7 +16,8 @@ var errorHandler = require('../utils/errorHandler');
 gulp.task('jade', function() {
 	return gulp.src(
 		[
-			'assets/**/**/**/*.jade'
+			'assets/**/**/**/*.jade',
+			'assets/**/**/**/_*.jade'
 		]
 	)
 	.pipe(plumber({errorHandler: onError}))
