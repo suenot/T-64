@@ -8,6 +8,7 @@ var size = require('gulp-filesize');
 var src = {};
 var config = require('../utils/config');
 var each = require('async-each-series');
+var gulpif = require('gulp-if');
 
 var postcssOptions = [
 	// require('cssnano')(),
@@ -37,11 +38,11 @@ gulp.task('minCss', function(done) {
 			{objectMode: true},
 			gulp.src(bundle.css)
 		)
-		// .pipe(if (bundle.uncss) {
-		// 	uncss({
-		// 		html: bundle.pages
-		// 	})
-		// })
+		.pipe(gulpif(bundle.uncss,
+			uncss({
+				html: bundle.pages
+			})
+		))
 		.pipe(concats(bundle.name + '.min.css'))
 		.pipe(postcss(postcssOptions))
 		.pipe(gulp.dest(bundle.buildTo))
