@@ -8,8 +8,10 @@ var uncss = require('gulp-uncss');
 var size = require('gulp-filesize');
 var del = require('del');
 var src = {};
+var config = require('../utils/config');
+var each = require('async-each-series');
 
-var options = [
+var postcssOptions = [
 	// require('cssnano')(),
 	// require('cssnext')(),
 	// require('css-mqpacker')(),
@@ -31,81 +33,20 @@ var options = [
 	require('postcss-single-charset')()
 ];
 
-src.buildConcat = {
-	'files': [
-		'public/app/libs.min.css',
-		'public/app/app.min.css'
-	],
-	'dest': 'public/app'
-};
-
-src.libsCss = {
-	'files': [
-		'bower_components/normalize.css/normalize.css',
-		'bower_components/bootstrap/dist/css/bootstrap.min.css',
-		'public/font/*.css',
-		'public/app/animate.css'
-	],
-	'dest': 'public/app'
-};
-
-src.appCss = {
-	'files': [
-		'public/app/app.css',
-		'public/blocks/**/*.css'
-	],
-	'dest': 'public/app'
-};
-
-// Concat all mifiy bower components
-gulp.task('concatLibs', function () {
-	return streamqueue(
-		{ objectMode: true },
-		gulp.src(src.libsCss.files)
-	)
-	.pipe(uncss({
-		html: ['public/index.html']
-	}))
-	.pipe(concats('libs.min.css'))
-	.pipe(notify({
-		'message': '<%= file.relative %> Concat all mifiy bower components and minified CSS!',
-		'subtitle': 'Gulp Process',
-		'sound': 'Beep',
-		'onLast': true
-	}))
-	.pipe(gulp.dest(src.libsCss.dest));
-});
-
-// Concat app.css and all css in folder blocks
-gulp.task('concatApp', function () {
-	return streamqueue(
-		{ objectMode: true },
-		gulp.src(src.appCss.files)
-	)
-	.pipe(concats('app.min.css'))
-	.pipe(postcss(options))
-	.pipe(notify({
-		'subtitle': 'Gulp Process',
-		'message': '<%= file.relative %> Concat app.css and all css in folder blocks and minified CSS!',
-		'sound': 'Beep',
-		'onLast': true
-	}))
-	.pipe(gulp.dest(src.appCss.dest));
-});
-
-// Concat Libs.min.css and app.min.css in folder build/app
-gulp.task('concatCss', ['concatLibs', 'concatApp'], function () {
-	return streamqueue(
-		{ objectMode: true },
-		gulp.src(src.buildConcat.files)
-	)
-	.pipe(concats('main.min.css'))
-	.pipe(size())
-	.pipe(notify({
-		'subtitle': 'Gulp Process',
-		'message': '<%= file.relative %> Created build.min.css!',
-		'sound': 'Beep',
-		'onLast': true
-	}))
-	.pipe(gulp.dest(src.buildConcat.dest));
+gulp.task('minCss', function(done) {
+	each(config.bundles, function(bundle, next) {
+		streamqueue(
+			{objectMode: true},
+			gulp.src(bundle.css)
+		)
+		// .pipe(if (bundle.uncss) {
+		// 	uncss({
+		// 		html: bundle.pages
+		// 	})
+		// })
+		.pipe(concats(bundle.name + '.min.css'))
+		.pipe(postcss(postcssOptions))
+		.pipe(gulp.dest(bundle.buildTo))
+		.on('finish', next);
+	}, done());
 });

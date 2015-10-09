@@ -33,4 +33,4 @@ gulp.task('docs', function() {
 	.pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('doc', ['docs', 'docsFile', 'index']);
+gulp.task('doc', ['docs', 'docsFile']);

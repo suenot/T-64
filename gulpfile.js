@@ -45,8 +45,8 @@ gulp.task('build', function(cb) {
 			'webp'
 		],
 		[
-			'concatCss',
-			'minjs'
+			'minCss',
+			'minJs'
 		],
 		[
 			'doc'
@@ -69,8 +69,7 @@ gulp.task('danger', function(cb) {
 		[
 			'stylus',
 			'app',
-			'jade',
-			'index'
+			'jade'
 		],
 		[
 			'pagesList',
@@ -80,8 +79,8 @@ gulp.task('danger', function(cb) {
 			'webp'
 		],
 		[
-			'concatCss',
-			'minjs'
+			'minCss',
+			'minJs'
 		],
 		[
 			'doc'

@@ -14,7 +14,13 @@ module.exports = {
 			pages: [
 				'public/*.html',
 				'!public/i.html'
-			]
+			],
+			build: [
+				'public/app/libs.min.js',
+				'public/app/libs.min.css'
+			],
+			buildTo: 'public/app',
+			uncss: true
 		},
 		{
 			name: 'app',
@@ -30,7 +36,13 @@ module.exports = {
 			pages: [
 				'public/*.html',
 				'!public/i.html'
-			]
+			],
+			build: [
+				'public/app/app.min.js',
+				'public/app/app.min.css'
+			],
+			buildTo: 'public/app',
+			uncss: false
 		}
 	]
 }

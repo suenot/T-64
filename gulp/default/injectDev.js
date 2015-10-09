@@ -4,16 +4,16 @@ var plumber = require('gulp-plumber');
 var inject = require('gulp-inject');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
-var config = require('../utils/config');
 var src = {};
+var config = require('../utils/config');
 var each = require('async-each-series');
 
 gulp.task('injectDev', ['jade'], function(done) {
-	each(config.bundles, function(el, next) {
-		gulp.src(el.pages)
+	each(config.bundles, function(bundle, next) {
+		gulp.src(bundle.pages)
 		.pipe(plumber({errorHandler: onError}))
-		.pipe(inject(gulp.src(el.css.concat(el.js), {read: false}), {
-			name: el.name,
+		.pipe(inject(gulp.src(bundle.css.concat(bundle.js), {read: false}), {
+			name: bundle.name,
 			ignorePath: 'public'
 		}))
 		.pipe(gulp.dest('public'))

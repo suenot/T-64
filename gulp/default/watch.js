@@ -10,7 +10,6 @@ gulp.task('watch', function() {
 	gulp.watch('assets/_img/**', ['_images']);
 	gulp.watch('assets/font/*', ['font']);
 	gulp.watch('assets/app/*.styl', ['stylus']);
-	gulp.watch('assets/pages/index.jade', ['index']);
 	gulp.watch('assets/pages/_*.jade', ['jade']);
 	gulp.watch('assets/docs/**', ['jade']);
 	gulp.watch('assets/docs/**', ['stylus']);

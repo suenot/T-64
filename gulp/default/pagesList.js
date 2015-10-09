@@ -8,19 +8,6 @@ var reload = browserSync.reload;
 var rename = require('gulp-rename');
 var src = {};
 
-// Creat index.html
-// gulp.task('index', function() {
-// 	return gulp.src('assets/pages/_index.jade')
-// 	.pipe(plumber({errorHandler: onError}))
-// 	.pipe(jade({
-// 		pretty: true,
-// 		basedir: 'assets'
-// 	}))
-// 	// .pipe(rename('index.html'))
-// 	.pipe(gulp.dest('public'))
-// 	.pipe(browserSync.reload({stream: true}));
-// });
-
 // Build complite jade and inject links css
 gulp.task('pagesList', ['jade'], function() {
 	var pages = gulp.src([
