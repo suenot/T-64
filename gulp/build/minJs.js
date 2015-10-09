@@ -3,7 +3,6 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concats = require('gulp-concat');
 var streamqueue = require('streamqueue');
-var size = require('gulp-filesize');
 var src = {};
 var config = require('../utils/config');
 var each = require('async-each-series');
@@ -16,7 +15,6 @@ gulp.task('minJs', function(done) {
 		)
 		.pipe(uglify())
 		.pipe(concats(bundle.name + '.min.js'))
-		.pipe(size())
 		.pipe(gulp.dest(bundle.buildTo))
 		.on('finish', next);
 	}, done());

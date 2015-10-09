@@ -52,8 +52,10 @@ gulp.task('build', function(cb) {
 		[
 			'injectProd',
 		],
-		'minHtml',
-		'server',
+		[
+			'minHtml',
+			'server'
+		],
 		cb
 	);
 });

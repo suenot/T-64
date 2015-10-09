@@ -1,14 +1,14 @@
 'use strict';
 var gulp = require('gulp');
-var concats = require('gulp-concat');
 var streamqueue = require('streamqueue');
 var postcss = require('gulp-postcss');
 var uncss = require('gulp-uncss');
-var size = require('gulp-filesize');
 var src = {};
 var config = require('../utils/config');
 var each = require('async-each-series');
 var gulpif = require('gulp-if');
+var minifyCss = require('gulp-minify-css');
+var concats = require('gulp-concat');
 
 var postcssOptions = [
 	// require('cssnano')(),
@@ -45,6 +45,7 @@ gulp.task('minCss', function(done) {
 		))
 		.pipe(concats(bundle.name + '.min.css'))
 		.pipe(postcss(postcssOptions))
+		.pipe(minifyCss())
 		.pipe(gulp.dest(bundle.buildTo))
 		.on('finish', next);
 	}, done());
