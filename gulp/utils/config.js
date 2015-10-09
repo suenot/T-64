@@ -3,7 +3,6 @@ module.exports = {
 		{
 			name: 'libs',
 			css: [
-				'bower_components/normalize.css/normalize.css',
 				'bower_components/bootstrap/dist/css/bootstrap.min.css'
 			],
 			js: [
@@ -26,7 +25,8 @@ module.exports = {
 			name: 'app',
 			css: [
 				'public/font/**/*.css',
-				'public/app/**/*.css',
+				'public/app/animate.css',
+				'public/app/app.css',
 				'public/blocks/**/*.css'
 			],
 			js: [
