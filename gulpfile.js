@@ -76,22 +76,20 @@ gulp.task('danger', function(cb) {
 			'font',
 			'_images',
 			'images',
-			'webp'
-		],
-		[
+			'webp',
 			'minCss',
-			'minJs'
-		],
-		[
+			'minJs',
 			'doc'
 		],
 		[
+			'injectProd',
 			'imagemin',
 			'imageminWebp',
-			'injectProd',
 		],
-		'minHtml',
-		'server',
+		[
+			'minHtml',
+			'server'
+		],
 		cb
 	);
 });

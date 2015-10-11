@@ -1,10 +1,10 @@
 'use strict';
 var isWin = /^win/.test(process.platform);
 var gulp = require('gulp');
+var filter = require('gulp-filter');
 
 
 if (!isWin) {
-	var filter = require('gulp-filter');
 	var svgSprite = require('gulp-svg-sprites');
 	var svg2png = require('gulp-svg2png');
 	gulp.task('svg-symbols', function () {
