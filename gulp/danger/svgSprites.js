@@ -2,11 +2,11 @@
 var isWin = /^win/.test(process.platform);
 var gulp = require('gulp');
 var filter = require('gulp-filter');
-var svgSprite = require('gulp-svg-sprites');
-var svg2png = require('gulp-svg2png');
 
 
 if (!isWin) {
+	var svgSprite = require('gulp-svg-sprites');
+	var svg2png = require('gulp-svg2png');
 	gulp.task('svg-symbols', function () {
 		return gulp.src('assets/img/svg/*.svg')
 		.pipe(svgSprite({
