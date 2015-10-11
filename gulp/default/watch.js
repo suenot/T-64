@@ -15,4 +15,5 @@ gulp.task('watch', ['setWatch'], function() {
 	gulp.watch('assets/_img/**', ['_images']);
 	gulp.watch('assets/font/*', ['font']);
 	gulp.watch('assets/docs/**/*.*', ['docsFile']);
+	gulp.watch('assets/*.jade', ['pageListInject']);
 });

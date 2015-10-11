@@ -26,7 +26,7 @@ gulp.task('injectDev', function(done) {
 gulp.task('jadeInject', function(cb) {
 	runSequence(
 		'jade',
-		['injectDev'],
+		'injectDev',
 		cb
 	);
 });
@@ -45,4 +45,11 @@ gulp.task('jsInject', function(cb) {
 		cb
 	);
 });
-
+gulp.task('pageListInject', function(cb) {
+	runSequence(
+		'jade',
+		'injectDev',
+		'pagesList',
+		cb
+	);
+});

@@ -25,7 +25,8 @@
     "gulp-webp": "^2.3.0",
     "postcss": "^5.0.9",
     "require-dir": "^0.3.0",
-    "run-sequence": "^1.1.2"
+    "run-sequence": "^1.1.2",
+    "uncss": "^0.12.1"
   },
   "description": "gulp no build",
   "main": "gulpfile.js",

@@ -11,6 +11,7 @@ var autoprefixer = require('autoprefixer');
 var src = {};
 var browsers ={};
 var changed = require('gulp-changed');
+var util = require('gulp-util');
 
 // Source files
 src.styl = {
@@ -39,15 +40,16 @@ var autoprefixerOptions = {
 	cascade: false
 };
 
+var autopref = [];
+if(util.env.dev)
+	autopref = [autoprefixer(autoprefixerOptions)];
 // Complite stylus and automatically prefix css
 gulp.task('stylus', function() {
 	return gulp.src(src.styl.files)
 	.pipe(changed(src.styl.dest, {extension: '.css'}))
 	.pipe(plumber({errorHandler: onError}))
 	.pipe(stylus())
-	.pipe(postcss([
-		autoprefixer(autoprefixerOptions)
-	]))
+	.pipe(postcss(autopref))
 	.pipe(gulp.dest(src.styl.dest))
 	.pipe(browserSync.reload({stream: true}))
 });
