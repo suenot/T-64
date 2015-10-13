@@ -18,8 +18,8 @@ gulp.task('injectDev', function(done) {
 			ignorePath: 'public'
 		}))
 		.pipe(gulp.dest('public'))
-		.pipe(browserSync.reload({stream: true}))
-		.on('finish', next);
+		.on('finish', next)
+		// .pipe(browserSync.reload({stream: true}))
 	}, done)
 });
 
@@ -27,6 +27,7 @@ gulp.task('jadeInject', function(cb) {
 	runSequence(
 		'jade',
 		'injectDev',
+		'reload',
 		cb
 	);
 });
