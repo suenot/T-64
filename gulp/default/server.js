@@ -32,3 +32,12 @@ gulp.task('server', function() {
 		codeSync: reloadBrowser
 	});
 });
+
+gulp.task('reload', function() {
+	return gulp.src(
+		[
+			'public/**/*.html'
+		]
+	)
+	.pipe(browserSync.reload({stream: true}));
+});
