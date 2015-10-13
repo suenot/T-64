@@ -48,5 +48,5 @@ gulp.task('minCss', function(done) {
 		.pipe(minifyCss())
 		.pipe(gulp.dest(bundle.buildTo))
 		.on('finish', next);
-	}, done());
+	}, done);
 });

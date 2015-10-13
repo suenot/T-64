@@ -17,5 +17,5 @@ gulp.task('minJs', function(done) {
 		.pipe(concats(bundle.name + '.min.js'))
 		.pipe(gulp.dest(bundle.buildTo))
 		.on('finish', next);
-	}, done());
+	}, done);
 });

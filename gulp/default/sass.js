@@ -10,5 +10,6 @@
 // 	.pipe(postcss([
 // 		autoprefixer()
 // 	]))
-// 	.pipe(gulp.dest('public/app/'));
+// 	.pipe(gulp.dest('public/app/'))
+// 	.pipe(browserSync.reload({stream: true}))
 // });

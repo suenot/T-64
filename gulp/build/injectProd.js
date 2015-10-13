@@ -19,5 +19,5 @@ gulp.task('injectProd', function(done) {
 		.pipe(gulp.dest('public'))
 		.pipe(browserSync.reload({stream: true}))
 		.on('finish', next);
-	}, done());
+	}, done);
 });

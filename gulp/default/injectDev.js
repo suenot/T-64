@@ -20,7 +20,7 @@ gulp.task('injectDev', function(done) {
 		.pipe(gulp.dest('public'))
 		.pipe(browserSync.reload({stream: true}))
 		.on('finish', next);
-	}, done());
+	}, done)
 });
 
 gulp.task('jadeInject', function(cb) {

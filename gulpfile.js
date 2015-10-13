@@ -3,6 +3,7 @@
 var runSequence = require('run-sequence');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+require('require-dir')('./gulp/utils', {recurse: true});
 
 gulp.task('default', function(cb) {
 	require('require-dir')('./gulp/default', {recurse: true});

@@ -34,7 +34,7 @@ gulp.task('jade', function() {
 		pretty: true,
 		basedir: 'assets'
 	}))
-	.pipe(gulp.dest('public'));
+	.pipe(gulp.dest('public'))
 });
 gulp.task('setWatch', function() {
 	global.isWatching = true;
