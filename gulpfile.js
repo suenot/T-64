@@ -4,6 +4,10 @@ var runSequence = require('run-sequence');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 require('require-dir')('./gulp/utils', {recurse: true});
+// var prefix = require('./gulp/utils/config').prefix;
+module.exports = {
+	prefix: false
+}
 
 gulp.task('default', function(cb) {
 	require('require-dir')('./gulp/default', {recurse: true});
@@ -31,6 +35,7 @@ gulp.task('default', function(cb) {
 });
 
 gulp.task('build', function(cb) {
+	module.exports.prefix = true;
 	require('require-dir')('./gulp/default', {recurse: true});
 	require('require-dir')('./gulp/build', {recurse: true});
 	runSequence(
