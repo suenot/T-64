@@ -24,4 +24,9 @@ npm install --force
 bower install
 ```
 ### Start
-```gulp build``` or ```gulp danger```
+gulp - старт проекта с default задачами
+gulp --open - старт проекта с открытием localhost в браузере
+gulp --live - старт проекта с livereload(автоматическое обновление при изменении файла)
+gulp --prefix - старт проекта с автопрефиксом (gulp build - запускается с автопрефиксом)
+gulp build - старт билдовой части
+gulp danger

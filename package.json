@@ -21,6 +21,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-rimraf": "^0.2.0",
     "gulp-sass": "^2.0.4",
+    "gulp-sftp": "^0.1.5",
     "gulp-stylus": "^2.0.2",
     "gulp-util": "^3.0.6",
     "gulp-webp": "^2.3.0",

@@ -41,9 +41,6 @@ var autoprefixerOptions = {
 	],
 	cascade: false
 };
-// if (util.env.prefix) {
-// 	prefix = true;
-// }
 // Complite stylus and automatically prefix css
 gulp.task('stylus', function() {
 	return gulp.src(src.styl.files)
