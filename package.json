@@ -23,11 +23,13 @@
     "gulp-sass": "^2.0.4",
     "gulp-sftp": "^0.1.5",
     "gulp-stylus": "^2.0.2",
+    "gulp-uncss": "^1.0.4",
     "gulp-util": "^3.0.6",
     "gulp-webp": "^2.3.0",
     "postcss": "^5.0.9",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
+    "streamqueue": "^1.1.1",
     "uncss": "^0.12.1"
   },
   "description": "gulp no build",

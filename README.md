@@ -20,8 +20,8 @@ npm install --development
 ## For production (+concat, minify, etc)
 ### Install
 ```
-npm install --force
-bower install
+#npm install --force
+##bower install
 ```
 ### Start
 gulp - старт проекта с default задачами

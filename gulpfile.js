@@ -60,6 +60,7 @@ gulp.task('build', function(cb) {
 		],
 		[
 			'minHtml',
+			'watchBuild',
 			'server'
 		],
 		cb
