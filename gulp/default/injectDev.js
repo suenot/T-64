@@ -17,7 +17,7 @@ gulp.task('injectDev', function(done) {
 			name: bundle.name,
 			ignorePath: 'public'
 		}))
-		.pipe(gulp.dest('public'))
+		.pipe(gulp.dest(bundle.destHtml))
 		.on('finish', next)
 		// .pipe(browserSync.reload({stream: true}))
 	}, done)

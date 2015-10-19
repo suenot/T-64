@@ -13,10 +13,11 @@ gulp.task('injectProd', function(done) {
 		gulp.src(bundle.pages)
 		.pipe(plumber({errorHandler: onError}))
 		.pipe(inject(gulp.src(bundle.build, {read: false}), {
+			removeTags: true,
 			name: bundle.name,
 			ignorePath: 'public'
 		}))
-		.pipe(gulp.dest('public'))
+		.pipe(gulp.dest(bundle.destHtml))
 		.pipe(browserSync.reload({stream: true}))
 		.on('finish', next);
 	}, done);

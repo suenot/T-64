@@ -19,6 +19,7 @@ module.exports = {
 				'public/app/libs.min.css'
 			],
 			buildTo: 'public/app',
+			destHtml: 'public',
 			uncss: true,
 			async: true
 		},
@@ -44,6 +45,7 @@ module.exports = {
 				'public/app/app.min.css'
 			],
 			buildTo: 'public/app',
+			destHtml: 'public',
 			uncss: false,
 			async: false
 		}
