@@ -1,9 +1,16 @@
 // start header
-//- Vladislav Grigorzevsky (gradiusalisik)
+//- Eugen Soloviov (suenot)
 header.header
-	.container
-		.header__wrap
-			.header__blocks(itemscope itemtype="http://schema.org/Organization")
-				include /blocks/logo/logo-header
-				include /blocks/socials/socials-header
+	.fotorama(data-maxheight="100%" data-fit="cover")
+		div(data-img="/img/header.jpg")
+			.container
+				.fs-display-4.display-block TherMom
+				p Мы предлагаем новый метод измерения температуры тела. Этот термометр, который крепится на ручку ребёнка. Он может передавать данные на Ваш смартфон на разных платформах. С помощью приложения Вы будете в курсе о температуре ребёнка на всех этапах. Так же вся информация будет отображаться в виде графика. При повышении температуры будет приходить оповещение в виде звукового сигнала. Нравится? Заказать. Рассказать другу
+	form(flex-container="row", flex-gutter="24")
+		div(flex-item="")
+			lx-text-field(label="Email", error="!emailValidation(textFields.email)")
+				input(type="email", ng-model="textFields.email")
+		div(flex-item="")
+			lx-text-field(label="Coupon code")
+				input(type="text", ng-model="textFields.coupon")
 // end header

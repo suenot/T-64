@@ -3,12 +3,20 @@ html
 	head
 		title Main
 		include /_head.jade
-	body
+	body(ng-app="app" ng-controller="MainCtrl")
 		main
 			include /blocks/header/header.jade
-			include /blocks/parallax/parallax.jade
-			include /blocks/search/search.jade
-			include /blocks/cards-list/cards-list.jade
-		include /blocks/subscribe/subscribe
-		include /blocks/footer/footer
+		script(type='text/javascript').
+			ChatraID = 'gdWLfPGSFTpSf6DTL';
+			(function(d, w, c) {
+				var n = d.getElementsByTagName('script')[0],
+					s = d.createElement('script');
+				w[c] = w[c] || function() {
+					(w[c].q = w[c].q || []).push(arguments);
+				};
+				s.async = true;
+				s.src = (d.location.protocol === 'https:' ? 'https:': 'http:')
+					+ '//chat.chatra.io/chatra.js';
+				n.parentNode.insertBefore(s, n);
+			})(document, window, 'Chatra');
 		include /_foot.jade

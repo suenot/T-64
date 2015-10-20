@@ -9,5 +9,6 @@
     "bootstrap": "~3.3.5"
   },
   "devDependencies": {
+    "fotorama": "suenot/fotorama-bower#~4.6.4"
   }
 }
